@@ -225,12 +225,21 @@ section {
 /* ------ Plugins ------ */
 /* ----------------------------------- */
 .js-lazy {
+  // 因為我們是用透明的 4x3 px 的圖做載入圖
+  // 如果圖沒加 u-object-fit 的話，會很小，所以要加上 min-width: 100%;
+  min-width: 100%;
+  background-color: var(--color-skeleton);
+  // background-image: linear-gradient(to right, var(--color-black-20), var(--color-black-40));
+  // for png 圖，不想要有載入預覽畫面，可以加
   &.-bg-clean {
-    background-color: transparent
+    background-color: transparent;
+    // background-image: none;
   }
-  &.loading {
-    min-width: 100%;
-    background-color: var(--color-skeleton);
+  &.loaded, &.error {
+    // 載入結束後要還原 width
+    min-width: 0;
+    background-color: transparent;
+    // background-image: none;
   }
 }
 

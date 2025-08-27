@@ -23,30 +23,33 @@ mixin ArtistCard(options)
     ];
 
   article(class='c-artist-card' class=classes)
-    a(href=props.link class="c-artist-card__link" data-aos="fade-up")
-      h3(class="text-xl c-artist-card__title") #{data.name}
+    a(href=props.link class="c-artist-card__wrap" data-aos="fade-up")
+      h3(class="text-xl fw-900 tracking-tight") #{data.title}
       //- scalar(10) 設置加速度 / friction(0-1) 設置過渡
       div(class="js-parallax" data-scalar-y="0" data-friction-x="0.4")
-        div(class="u-img-ratio" style="--ratio: 16/9")
+        div(class="u-img-ratio" style="--ratio: 3/2")
+          //- 因為 aspect-ratio 會因為圖片寬高而不符合設定的比例
+          //- 所以圖片要加上 -abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio
+          //- 等於是 u-img-ratio 當容器，讓 img 去撐滿
           img(
-            data-src=`${basePath}/${data.image}` alt=`大港開唱藝人名單 ${data.name}`
-            class="u-object-fit js-lazy"
+            data-src=`${basePath}/${data.image}` alt=`大港開唱藝人名單 ${data.title}`
+            class="u-object-fit -abs js-lazy"
           )
         div(
           class="u-img-ratio c-artist-card__glitch-mask -primary"
           data-depth="-0.2"
-          style="--ratio: 16/9"
+          style="--ratio: 3/2"
         )
           img(
-            data-src=`${basePath}/${data.image}` alt=`大港開唱藝人名單 ${data.name}`
-            class="u-object-fit js-lazy"
+            data-src=`${basePath}/${data.image}` alt=`大港開唱藝人名單 ${data.title}`
+            class="u-object-fit -abs js-lazy"
           )
         div(
           class="u-img-ratio c-artist-card__glitch-mask -secondary"
           data-depth="0.2"
-          style="--ratio: 16/9"
+          style="--ratio: 3/2"
         )
           img(
-            data-src=`${basePath}/${data.image}` alt=`大港開唱藝人名單 ${data.name}`
-            class="u-object-fit js-lazy"
+            data-src=`${basePath}/${data.image}` alt=`大港開唱藝人名單 ${data.title}`
+            class="u-object-fit -abs js-lazy"
           )

@@ -115,9 +115,11 @@ html(lang="en")
               div(class="l-about__img-wrap")
                 //- data-parallax-offset 自訂義的 gsap 圖片視差，值為位移 px
                 div(class="l-about__img-mask" data-parallax-offset="-200")
+                  //- abs 是因為父層沒有固定高度，會導致吃原圖高度而跑版
+                  //- 要讓圖片跟著父層吃 col 的 stretch 就要加上 abs
                   img(
                     src="img/about/about.jpg", alt="關於大港開唱"
-                    class="u-object-fit -parallax"
+                    class="u-object-fit -abs -parallax"
                   )
             div(class="col-md-4 order-md-0 order-1")
               div(class="l-about__content-wrap")

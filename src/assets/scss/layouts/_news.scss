@@ -48,6 +48,18 @@
   }
 }
 
+.l-news-list {
+  &__btn {
+    font-size: var(--text-xl);
+    font-weight: 900;
+    color: var(--color-gray);
+    transition: color 0.3s;
+    &.hover, &.is-active {
+      color: var(--color-gray-light);
+    }
+  }
+}
+
 .l-news-detail {
   &__title-wrap {
     display: flex;

@@ -34,8 +34,9 @@ const lenis = new Lenis({
 const pathname = location.pathname;
 const a = document.querySelectorAll('a');
 a.forEach(function(item) {
-  const aHref = item.getAttribute('href');
-  if (pathname.includes(aHref)) {
+  // const href = el.pathname + el.hash;
+  const href = item.getAttribute('href');
+  if (pathname.includes(href)) {
     item.classList.add('is-active');
   }
 });
@@ -116,7 +117,7 @@ $lazyImgs.forEach(function(item) {
   // https://png-pixel.com/
   item.setAttribute(
     'src',
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAQAAAAe/WZNAAAADklEQVR42mNkgAJGDAYAAFEABCaLYqoAAAAASUVORK5CYII='
   );
 });
 // https://github.com/verlok/vanilla-lazyload
@@ -173,29 +174,32 @@ tl.to($blockadeTexts[1], { x: '100vw' }, 'startLabel+=5%');
 tl.to($blockadeTexts[2], { x: '-60vw' }, 'startLabel+=5%');
 tl.to($blockadeTexts[3], { x: '90vw' }, 'startLabel+=10%');
 
-// 圖片視差滾動
-gsap.utils.toArray('[data-parallax-offset]').forEach(mask => {
-  const wrapper = mask;
-  const img = wrapper.querySelector('img');
+// 確保圖片都載入後在初始化視差滾動
+window.addEventListener('load', function() {
+  // 圖片視差滾動
+  gsap.utils.toArray('[data-parallax-offset]').forEach(mask => {
+    const wrapper = mask;
+    const img = wrapper.querySelector('img');
+    
+    img.style.willChange = 'transform';
   
-  img.style.willChange = 'transform';
-
-  const tl = gsap.timeline({
-    defaults: { ease: 'linear' },
-    scrollTrigger: {
-      trigger: wrapper,
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: true
+    const tl = gsap.timeline({
+      defaults: { ease: 'linear' },
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  
+    const offset = Number(wrapper.dataset.parallaxOffset);
+    img.style.setProperty('--parallax-offset', Math.abs(offset));
+  
+    if (offset > 0) {
+      tl.fromTo(img, { y: -1 * offset }, { y: 0 });
+    } else {
+      tl.fromTo(img, { y: 0 }, { y: offset });
     }
   });
-
-  const offset = Number(wrapper.dataset.parallaxOffset);
-  img.style.setProperty('--parallax-offset', Math.abs(offset));
-
-  if (offset > 0) {
-    tl.fromTo(img, { y: -1 * offset }, { y: 0 });
-  } else {
-    tl.fromTo(img, { y: 0 }, { y: offset });
-  }
 });

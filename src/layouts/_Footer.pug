@@ -7,11 +7,14 @@ footer(class="l-footer")
   div(class="l-footer-date")
     div(class="l-footer-date__bg-mask" data-parallax-offset="200")
       img(
-        src=`${basePath}/img/footer/bg.jpg` alt="大港開唱資訊"
-        class="u-object-fit -parallax"
+        data-src=`${basePath}/img/footer/bg.jpg` alt="大港開唱資訊"
+        class="js-lazy u-object-fit -parallax"
       )
     div(class="l-footer-date__img-mask")
-      img(src=`${basePath}/img/footer/date.svg`, alt="大港開唱資訊")
+      img(
+        data-src=`${basePath}/img/footer/date.svg`, alt="大港開唱資訊"
+        class="js-lazy -bg-clean"
+      )
 
   div(class="l-footer__menu")
     ul(class="l-footer__btn-box")
