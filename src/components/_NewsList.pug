@@ -54,7 +54,7 @@ mixin NewsList(options)
               //- li 
               //-   a(href=`${basePath}/news/category/design.html`) 設計快訊
 
-            div(class="row -gap-md")
+            div(class="row --gap-md")
               each item, index in props.list
                 div(class="col-6 col-lg-4 col-xxl-3")
                   +Card({ data: item, index })

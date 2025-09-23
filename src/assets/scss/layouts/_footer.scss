@@ -38,10 +38,10 @@
     color: var(--color-secondary);
   }
   &__btn:hover &__text {
-    &.-en {
+    &.--en {
       opacity: 0;
     }
-    &.-zh {
+    &.--zh {
       color: var(--color-secondary);
       opacity: 1;
     }
@@ -51,10 +51,10 @@
     text-align: center;
     white-space: nowrap;
     transition: color 0.3s, opacity 0.3s;
-    &.-en {
+    &.--en {
       font-family: var(--font-en);
     }
-    &.-zh {
+    &.--zh {
       position: absolute;
       left: 50%;
       top: 50%;

@@ -52,14 +52,14 @@ ul, ol {
   padding: 0;
   margin: 0;
   list-style: none;
-  &.-initial {
+  &.--initial {
     list-style: revert;
   }
 }
-ul.-initial {
+ul.--initial {
   padding-left: rem(28);
 }
-ol.-initial {
+ol.--initial {
   padding-left: rem(36);
 }
 img {
@@ -123,7 +123,7 @@ span {
 // 使用 section 控制左右內距（使不卡邊）
 section {
   padding: var(--section-spacing-y) var(--section-spacing-x);
-  &.-gradient {
+  &.--gradient {
     background-image: linear-gradient(to bottom, var(--color-black) 0%, transparent 70%);
   }
 }
@@ -161,7 +161,7 @@ section {
   margin: 0 auto;
 
   // 靠左或右，並同時保有 container 最大寬特性
-  &[class*="-align"] {
+  &[class*="--align"] {
     // 減回去 section padding 空間
     --edge-fill: calc(-1 * var(--section-spacing-x));
 
@@ -181,11 +181,11 @@ section {
       --bs-gutter-x: 0;
     }
   }
-  &.-align-left {
+  &.--align-left {
     padding-left: 0;
     margin-left: var(--edge-fill);
   }
-  &.-align-right {
+  &.--align-right {
     padding-right: 0;
     margin-right: var(--edge-fill);
   }
@@ -193,11 +193,11 @@ section {
 
 // Bootstrap row 自定義 gap
 .row {
-  &.-no-gap {
+  &.--no-gap {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
   }
-  &.-gap-md {
+  &.--gap-md {
     --bs-gutter-x: var(--spacing-8);
     --bs-gutter-y: var(--spacing-8);
     @include media(max-sm) {
@@ -205,7 +205,7 @@ section {
       --bs-gutter-y: var(--spacing-6);
     }
   }
-  &.-gap {
+  &.--gap {
     --bs-gutter-x: var(--spacing-6);
     --bs-gutter-y: var(--spacing-6);
     @include media(max-sm) {
@@ -213,7 +213,7 @@ section {
       --bs-gutter-y: var(--spacing-4);
     }
   }
-  &.-gap-y-md {
+  &.--gap-y-md {
     --bs-gutter-y: var(--spacing-8);
     @include media(max-sm) {
       --bs-gutter-y: var(--spacing-6);
@@ -231,7 +231,7 @@ section {
   background-color: var(--color-skeleton);
   // background-image: linear-gradient(to right, var(--color-black-20), var(--color-black-40));
   // for png 圖，不想要有載入預覽畫面，可以加
-  &.-bg-clean {
+  &.--bg-clean {
     background-color: transparent;
     // background-image: none;
   }

@@ -18,18 +18,18 @@ mixin Card(options)
         style="--ratio: 1/1"
       )
         //- 因為 aspect-ratio 會因為圖片寬高而不符合設定的比例
-        //- 所以圖片要加上 -abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio
+        //- 所以圖片要加上 --abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio
         //- 等於是 u-img-ratio 當容器，讓 img 去撐滿
         img(
           src=`${basePath}/${data.image}`
           alt=data.title
-          class="u-object-fit -abs"
+          class="u-object-fit --abs"
         )
 
       h3(class="my-4 text-md fw-700 line-clamp-1") #{data.title}
       p(class="line-clamp-2") #{data.description}
 
-      div(class="o-btn -align-right ")
+      div(class="o-btn --align-right ")
         +Btn({
           href: `${basePath}/news/${data.path || data.id}.html`,
           align: 'right'

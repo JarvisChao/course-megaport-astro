@@ -42,7 +42,7 @@ html(lang="en")
                 )
 
 
-      section(id="lineup" class="-gradient pb-0 l-lineup")
+      section(id="lineup" class="--gradient pb-0 l-lineup")
         +Blockade(class="l-lineup__blockade")
         div(class="l-lineup__sticky")
           div(class="container")
@@ -52,7 +52,7 @@ html(lang="en")
 
             //- input-element 滑鼠進入指定區塊內才生效
             div(
-              class="row -gap l-lineup__box js-parallax"
+              class="row --gap l-lineup__box js-parallax"
               data-input-element=".l-lineup"
             )
               div(class="col-sm-5 l-lineup__wrap" data-depth="0.1")
@@ -86,9 +86,9 @@ html(lang="en")
 
 
       section(id="news" class="l-home-news")
-        div(class="l-home-news__swiper-btn -prev")
+        div(class="l-home-news__swiper-btn --prev")
           iconify-icon(icon="fa-solid:arrow-left" class="u-icon")
-        div(class="l-home-news__swiper-btn -next")
+        div(class="l-home-news__swiper-btn --next")
           iconify-icon(icon="fa-solid:arrow-right" class="u-icon")
 
         div(class="container")
@@ -103,13 +103,13 @@ html(lang="en")
                   +Card({ data: item })
 
           
-      section(id="about" class="-gradient l-about")
+      section(id="about" class="--gradient l-about")
         div(class="container")
           div(class="mb-20" data-aos="fade-right")
             h2(class="o-section-title") ABOUT
               span(class="o-text-lg") MEGAPORT FESTIVAL
 
-        div(class="container-sm -align-left")
+        div(class="container-sm --align-left")
           div(class="row")
             div(class="col-md-8 order-md-0 order-2" data-aos="fade-right")
               div(class="l-about__img-wrap")
@@ -119,7 +119,7 @@ html(lang="en")
                   //- 要讓圖片跟著父層吃 col 的 stretch 就要加上 abs
                   img(
                     src="img/about/about.jpg", alt="關於大港開唱"
-                    class="u-object-fit -abs -parallax"
+                    class="u-object-fit --abs --parallax"
                   )
             div(class="col-md-4 order-md-0 order-1")
               div(class="l-about__content-wrap")
@@ -130,7 +130,7 @@ html(lang="en")
                   h3(class="text-2xl fw-900 mb-4") 「人生」與「音樂」
                   p(class="fw-500 line-clamp-3") 大港舉辦在高雄港邊，獨特的海港地景和人文風情，常勾起人生中各種酸甜苦辣的回憶。也因如此，大港總是邀請有著豐富人生歷程的知名藝人及業界前輩演出，也會與新一代的樂團或藝人一起合作演出，交融出世代之間的化學效應，往往成為當年度為人津津樂道的經典現場
 
-                //- div(class="o-btn -align-right mt-16")
+                //- div(class="o-btn --align-right mt-16")
                 //-   a(
                 //-     href=`${basePath}/about.html` target="_blank"
                 //-     class="o-btn__link"
@@ -188,7 +188,7 @@ html(lang="en")
           },
         },
         navigation: {
-          prevEl: '.l-home-news__swiper-btn.-prev',
-          nextEl: '.l-home-news__swiper-btn.-next',
+          prevEl: '.l-home-news__swiper-btn.--prev',
+          nextEl: '.l-home-news__swiper-btn.--next',
         },
       })

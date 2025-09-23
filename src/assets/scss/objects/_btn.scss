@@ -1,10 +1,10 @@
 .o-btn {
   width: 100%;
-  &.-align-right {
+  &.--align-right {
     display: flex;
     justify-content: flex-end;
   }
-  &.-full &__link {
+  &.--full &__link {
     display: block;
   }
   &__link {

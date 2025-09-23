@@ -9,8 +9,8 @@ mixin Btn(options)
     }, options);
 
     const classes = [
-      props.size ? `-size-${props.size}` : '',
-      props.align ? `-align-${props.align}` : ''
+      props.size ? `--size-${props.size}` : '',
+      props.align ? `--align-${props.align}` : ''
     ];
   //- &attributes(attributes) 傳入 html 屬性
   div&attributes(attributes)(

@@ -1,7 +1,7 @@
 // Image
 // 等比圖片製作
 // 使用 padding-bottom 作法
-// `父層` 使用 `u-img-ratio` 並將 `img` 加上 `u-object-fit` `-abs` 使其絕對定位（才能成功套用等比例）
+// `父層` 使用 `u-img-ratio` 並將 `img` 加上 `u-object-fit` `--abs` 使其絕對定位（才能成功套用等比例）
 // .u-img-ratio {
 //   --img-w-ratio: 3;
 //   --img-h-ratio: 2;
@@ -50,13 +50,13 @@
   object-fit: var(--object-fit);
   object-position: var(--object-position-x) var(--object-position-y);
   overflow: hidden;
-  &.-abs {
+  &.--abs {
     position: absolute;
     left: 0;
     top: 0;
   }
   // for GSAP 視差滾動
-  &.-parallax {
+  &.--parallax {
     // 把要做視差滾動的圖片高度，加上位移量，讓他有空間位移
     // 乘以 1px 是為了讓 --parallax-offset 數字轉 px
     height: calc(100% + var(--parallax-offset) * 1px);

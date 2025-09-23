@@ -128,6 +128,11 @@ const lazyLoad = new LazyLoad({
   threshold: 500,
   callback_loaded: function() {
     AOS.refresh();
+
+    // 只針對 parallax 元素做 refresh，避免滾動頻繁卡頓
+    if (el.classList.contains('--parallax')) {
+      ScrollTrigger && ScrollTrigger.refresh();
+    }
   }
 });
 

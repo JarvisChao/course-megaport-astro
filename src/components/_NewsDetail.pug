@@ -8,6 +8,26 @@ mixin NewsDetail(path_id)
       return (item.path || item.id) === path_id;
     }) || {};
 
+    const url = `${baseUrl}${basePath}/news/${(data.path || data.id)}.html`;
+    
+    const jsonLd = `
+      {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "url": "${url}",
+        "publisher":{
+            "@type":"Organization",
+            "name":"${siteName}",
+            "logo":"${baseUrl}${basePath}/img/logo/logo.svg"
+        },
+        "headline": "${data.title}",
+        "mainEntityOfPage": "${url}",
+        "articleBody": "${data.content}",
+        "image": "${baseUrl}${basePath}/${data.image}",
+        "datePublished":"${data.publish_date}"
+      }
+    `
+
   doctype html
   html(lang="en")
     head
@@ -18,6 +38,9 @@ mixin NewsDetail(path_id)
         description = data.description;
 
       include ../layouts/_Head.pug
+
+      script(type="application/ld+json")
+        !=jsonLd
 
     body
       include ../layouts/_Header.pug
