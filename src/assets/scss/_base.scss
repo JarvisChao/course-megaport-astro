@@ -17,7 +17,7 @@
 
 html {
   font-size: 16px;
-  @include media(max-xl) {
+  @include media(max-3xl) {
     font-size: 15px;
   }
 }
@@ -32,10 +32,10 @@ body {
   font-weight: 400;
   // ios 文字去毛邊
   -webkit-font-smoothing: antialiased;
+  line-height: var(--leading-tight);
   // letter-spacing: 1.2px;
   // 0.08em 會根據設定的文字大小 0.08 倍的間距
   letter-spacing: var(--tracking-normal);
-  line-height: var(--leading-tight);
   color: var(--color-gray-light);
   transition: background-color 0.8s;
   &.is-news-active {
@@ -48,28 +48,6 @@ body {
 /* ----------------------------------- */
 /* ------ Reset ------ */
 /* ----------------------------------- */
-ul, ol {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  &.--initial {
-    list-style: revert;
-  }
-}
-ul.--initial {
-  padding-left: rem(28);
-}
-ol.--initial {
-  padding-left: rem(36);
-}
-img {
-  max-width: 100%;
-  vertical-align: middle;
-}
-svg {
-  max-width: inherit;
-  vertical-align: middle;
-}
 a, button, input, label, select, textarea {
   // 防止雙點擊畫面放大
   -ms-touch-action: manipulation;
@@ -92,6 +70,38 @@ button {
   appearance: none;
   border: none;
 }
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+svg {
+  max-width: inherit;
+  vertical-align: middle;
+}
+ul, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  &.--initial {
+    list-style: revert;
+  }
+}
+ul.--initial {
+  padding-left: rem(28);
+}
+ol.--initial {
+  padding-left: rem(36);
+}
+
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+}
+td, th {
+  padding: 0 var(--spacing-3);
+  border: 1px solid var(--color-black);
+}
+
 h1, h2, h3, h4, h5, h6, p, button {
   margin: 0;
   // 防止插件影響我們自己的設定

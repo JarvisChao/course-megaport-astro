@@ -39,6 +39,7 @@
   // }
   --spacing-40: #{rem(160)};
   --spacing-36: #{rem(144)};
+  --spacing-32: #{rem(128)};
   --spacing-30: #{rem(120)};
   --spacing-26: #{rem(104)};
   --spacing-24: #{rem(96)};
@@ -60,6 +61,7 @@
   @include media(max-sm) {
     --spacing-40: 24vw;
     --spacing-36: 22vw;
+    --spacing-32: 21vw;
     --spacing-30: 20vw;
     --spacing-26: 19vw;
     --spacing-24: 18vw;
@@ -108,6 +110,9 @@
   --text-base: #{rem(16)};
   --text-sm: #{rem(14)};
   --text-xs: #{rem(12)};
+  @include media(max-md) {
+    --text-4xl: #{rem(36)};
+  }
   @include media(max-sm) {
     --text-5xl: #{rem(62)};
     --text-4xl: #{rem(32)};
