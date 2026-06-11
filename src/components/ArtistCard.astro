@@ -1,0 +1,132 @@
+---
+import { SITE_BASE_PATH } from '@/consts';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  // 資料
+  data: CollectionEntry<'artists'>['data'];
+  // 設定值
+  size?: string;
+  direction?: string;
+}
+
+const { data, size = '', direction = '' } = Astro.props;
+---
+
+<script>
+  import Parallax from 'parallax-js';
+
+  //-- Parallax
+  document.querySelectorAll<HTMLElement>('.js-parallax').forEach((item) => {
+    new Parallax(item, {
+      // 滑鼠進入指定元素內才生效
+      hoverOnly: true,
+      // 滑鼠相對於指定元素（false 預設為可視區）
+      relativeInput: true,
+    });
+  });
+</script>
+
+<article
+  data-aos="fade-up"
+  class:list={[
+    'c-artist-card',
+    size && `--size-${size}`,
+    direction && `--${direction}`,
+  ]}
+>
+  <a class="c-artist-card__wrap">
+    <h3 class="text-xl font-900 tracking-tight">{data.title}</h3>
+    <!-- scalar(10) 設置加速度 / friction(0-1) 設置過渡 -->
+    <div class="js-parallax" data-scalar-y="0" data-friction-x="0.4">
+      <div class="u-img-ratio" style="--ratio: 3/2">
+        <!-- 因為 aspect-ratio 會因為圖片寬高而不符合設定的比例 -->
+        <!-- 所以圖片要加上 --abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio -->
+        <!-- 等於是 u-img-ratio 當容器，讓 img 去撐滿 -->
+        <img
+          data-src={`${SITE_BASE_PATH}/${data.image}`}
+          alt={`大港開唱藝人名單 ${data.title}`}
+          class="u-object-fit --abs js-lazy"
+        />
+      </div>
+      <div
+        class="u-img-ratio c-artist-card__glitch-mask --primary"
+        data-depth="-0.2"
+        style="--ratio: 3/2"
+      >
+        <img
+          data-src={`${SITE_BASE_PATH}/${data.image}`}
+          alt={`大港開唱藝人名單 ${data.title}`}
+          class="u-object-fit --abs js-lazy"
+        />
+      </div>
+      <div
+        class="u-img-ratio c-artist-card__glitch-mask --secondary"
+        data-depth="0.2"
+        style="--ratio: 3/2"
+      >
+        <img
+          data-src={`${SITE_BASE_PATH}/${data.image}`}
+          alt={`大港開唱藝人名單 ${data.title}`}
+          class="u-object-fit --abs js-lazy"
+        />
+      </div>
+    </div>
+  </a>
+</article>
+
+<style lang="scss">
+  .c-artist-card {
+    width: 100%;
+    max-width: rem(450);
+    pointer-events: auto;
+
+    &.--size-lg {
+      max-width: rem(560);
+    }
+
+    &__wrap {
+      display: flex;
+      flex-direction: column;
+      row-gap: var(--spacing-2);
+      filter: grayscale(100%);
+      transition: filter 0.3s;
+
+      &:hover {
+        filter: grayscale(0%);
+      }
+    }
+
+    &.--reverse &__wrap {
+      flex-direction: column-reverse;
+    }
+
+    &__glitch-mask {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      mix-blend-mode: lighten;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        mix-blend-mode: multiply;
+        z-index: 10;
+      }
+
+      &.--primary::after {
+        background-color: var(--color-primary);
+      }
+
+      &.--secondary::after {
+        background-color: var(--color-secondary);
+      }
+    }
+  }
+</style>

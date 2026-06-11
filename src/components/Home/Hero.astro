@@ -1,0 +1,70 @@
+---
+import { SITE_BASE_PATH, SITE_TITLE } from '@/consts';
+---
+
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, EffectFade } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-fade';
+
+  new Swiper('.l-hero__swiper', {
+    modules: [Autoplay, EffectFade],
+    effect: 'fade',
+    longSwipesRatio: 0.1,
+    loop: true,
+    speed: 1200,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+  });
+</script>
+
+<div class="l-hero" data-aos="fade">
+  <!-- 引入插件基本步驟 -->
+  <!-- 引入 CSS、引入 JS、寫插件要求的 HTML 結構、用 JS 初始化插件 -->
+  <div class="swiper l-hero__swiper">
+    <div class="swiper-wrapper">
+      {
+        ['01', '02', '03'].map((number) => (
+          <div class="swiper-slide l-hero__slide">
+            <div class="l-hero__img-mask">
+              <img
+                data-src={`${SITE_BASE_PATH}/img/banner/img-${number}.jpg`}
+                alt={SITE_TITLE}
+                class="u-object-fit js-lazy"
+              />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .l-hero {
+    height: 100vh;
+
+    &__swiper,
+    &__img-mask {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__slide.swiper-slide-active &__img-mask {
+      transform: scale(1.1);
+    }
+
+    &__img-mask {
+      transform-origin: center center;
+      transform: scale(1);
+      transition: transform 15s;
+    }
+
+    @include media(max-2xl) {
+      height: 80vh;
+    }
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+import NewsList from '@/components/NewsList.astro';
+import NewsLayout from '@/layouts/NewsLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = (await getCollection('news')).sort((a, b) =>
+    b.data.publishDate.localeCompare(a.data.publishDate),
+  );
+  const newsCategories = (await getCollection('newsCategories')).sort(
+    (a, b) => a.data.order - b.data.order,
+  );
+
+  return newsCategories
+    .filter(({ data }) => data.path)
+    .map((category) => {
+      let list = entries.filter(
+        (entry) => entry.data.category === category.data.path,
+      );
+
+      if (category.data.path === 'latest') list = entries.slice(0, 4);
+      if (category.data.path === 'others') {
+        // 篩出沒有設定分類的
+        list = entries.filter((entry) => !entry.data.category);
+      }
+
+      return {
+        params: { category: category.data.path },
+        props: { currentCategory: category.data, list },
+      };
+    });
+}
+
+const { currentCategory, list } = Astro.props;
+---
+
+<NewsLayout currentCategory={currentCategory}>
+  <NewsList list={list} />
+</NewsLayout>

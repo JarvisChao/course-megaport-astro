@@ -1,0 +1,20 @@
+---
+import NewsList from '@/components/NewsList.astro';
+import NewsLayout from '@/layouts/NewsLayout.astro';
+import { getCollection } from 'astro:content';
+
+const list = (await getCollection('news')).sort((a, b) =>
+  b.data.publishDate.localeCompare(a.data.publishDate),
+);
+const currentCategory = (await getCollection('newsCategories')).find(
+  ({ data }) => data.path === '',
+);
+
+if (!currentCategory) {
+  throw new Error('Missing all news category.');
+}
+---
+
+<NewsLayout currentCategory={currentCategory.data}>
+  <NewsList list={list} />
+</NewsLayout>

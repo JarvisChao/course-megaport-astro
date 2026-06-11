@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE_BASE_PATH, SITE_BASE_URL, SITE_TITLE } from '@/consts';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('news');
+
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const slug = Astro.params.slug ?? entry.id;
+const url = `${SITE_BASE_URL}${SITE_BASE_PATH}/news/${slug}/`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  url,
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_TITLE,
+    logo: `${SITE_BASE_URL}${SITE_BASE_PATH}/img/logo/logo.svg`,
+  },
+  headline: entry.data.title,
+  mainEntityOfPage: url,
+  articleBody: entry.data.description,
+  image: `${SITE_BASE_URL}${SITE_BASE_PATH}/${entry.data.image}`,
+  datePublished: entry.data.publishDate,
+};
+---
+
+<BaseLayout
+  path={`/news/${slug}/`}
+  pageTitle={entry.data.title}
+  infoTitle=""
+  description={entry.data.description}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+  <main class="l-main">
+    <section class="l-news-detail">
+      <div class="container-xs">
+        <div class="l-news-detail__title-wrap">
+          <h1 class="text-2xl font-900">{entry.data.title}</h1>
+          <span class="o-text-lg">
+            {entry.data.publishDate}
+          </span>
+        </div>
+      </div>
+      <div class="container-2xs">
+        <div class="l-news-detail__content">
+          <img
+            src={`${SITE_BASE_PATH}/${entry.data.image}`}
+            alt={entry.data.title}
+          />
+          <div class="u-editor">
+            <!-- 遇到後台編輯器，還原 reset 設定值 -->
+            <Content />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  .o-text-lg {
+    font-size: var(--text-lg);
+    font-weight: 900;
+    letter-spacing: var(--tracking-tighter);
+  }
+
+  .l-news-detail {
+    &__title-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: var(--spacing-2);
+      border-bottom: 2px solid var(--color-gray-light);
+    }
+
+    &__content {
+      padding: var(--spacing-10) var(--spacing-2) 0;
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import Btn from '@/components/Btn.astro';
+import { SITE_BASE_PATH } from '@/consts';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'news'>;
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+const href = `${SITE_BASE_PATH}/news/${entry.id}/`;
+---
+
+<article class="c-card">
+  <span class="c-card__date">{data.publishDate}</span>
+  <div class="c-card__wrap">
+    <a href={href} class="u-img-ratio" style="--ratio: 1/1">
+      <!-- 因為 aspect-ratio 會因為圖片寬高而不符合設定的比例 -->
+      <!-- 所以圖片要加上 --abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio -->
+      <!-- 等於是 u-img-ratio 當容器，讓 img 去撐滿 -->
+      <img
+        src={`${SITE_BASE_PATH}/${data.image}`}
+        alt={data.title}
+        class="u-object-fit --abs"
+      />
+    </a>
+    <h3 class="my-4 text-md font-700 line-clamp-1">{data.title}</h3>
+    <p class="line-clamp-2">{data.description}</p>
+    <div class="o-btn --align-right">
+      <Btn href={href} align="right" class="mt-10 mb-2">MORE</Btn>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  .c-card {
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: drop-shadow(0 0 rem(8) var(--color-black-80));
+    }
+
+    &__date {
+      display: inline-block;
+      padding: var(--spacing-2) var(--spacing-4);
+      background-color: var(--color-black);
+      border-radius: var(--spacing-2) var(--spacing-2) 0 0;
+      font-size: var(--text-lg);
+      font-weight: 900;
+      letter-spacing: var(--tracking-tighter);
+      color: var(--color-primary);
+    }
+
+    &__wrap {
+      padding: var(--spacing-4);
+      background-color: var(--color-black);
+      border-radius: var(--spacing-2);
+      border-top-left-radius: 0;
+    }
+  }
+</style>

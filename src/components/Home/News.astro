@@ -1,0 +1,147 @@
+---
+import Card from '@/components/Card.astro';
+import SectionTitle from '@/components/Home/SectionTitle.astro';
+import { getCollection } from 'astro:content';
+
+const newsList = (await getCollection('news')).sort((a, b) =>
+  b.data.publishDate.localeCompare(a.data.publishDate),
+);
+---
+
+<script>
+  import arrowLeftIcon from '@iconify-icons/fa-solid/arrow-left';
+  import arrowRightIcon from '@iconify-icons/fa-solid/arrow-right';
+  import { addIcon } from 'iconify-icon';
+  import Swiper from 'swiper';
+  import { Navigation } from 'swiper/modules';
+  import { lazyLoad } from '@/assets/js/main';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+
+  addIcon('fa-solid:arrow-left', arrowLeftIcon);
+  addIcon('fa-solid:arrow-right', arrowRightIcon);
+
+  new Swiper('.l-home-news__swiper', {
+    modules: [Navigation],
+    longSwipesRatio: 0.1,
+    loop: true,
+    speed: 1200,
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 12,
+    breakpoints: {
+      1400: {
+        slidesPerView: 4,
+        spaceBetween: 24,
+        centeredSlides: false,
+      },
+      992: {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        centeredSlides: false,
+      },
+      576: {
+        slidesPerView: 2,
+        spaceBetween: 16,
+        centeredSlides: false,
+      },
+    },
+    on: {
+      init: () => {
+        lazyLoad.update();
+      },
+    },
+    navigation: {
+      prevEl: '.l-home-news__swiper-btn.--prev',
+      nextEl: '.l-home-news__swiper-btn.--next',
+    },
+  });
+
+  // 滾動至 news 時改變背景顏色
+  const $news = document.querySelector<HTMLElement>('.l-home-news');
+  window.addEventListener('scroll', () => {
+    if (!$news) return;
+
+    // $news.getBoundingClientRect().top => news 頂到視窗上緣後會是負數
+    const newsTop = $news.getBoundingClientRect().top;
+    const enter = newsTop < 100;
+    // $news.offsetHeight => news 元素的高
+    const beforeLeave = newsTop * -1 < $news.offsetHeight / 3;
+
+    document.body.classList.toggle('is-news-active', enter && beforeLeave);
+  });
+</script>
+
+<section id="news" class="l-home-news">
+  <div class="l-home-news__swiper-btn --prev">
+    <iconify-icon icon="fa-solid:arrow-left" class="u-icon"></iconify-icon>
+  </div>
+  <div class="l-home-news__swiper-btn --next">
+    <iconify-icon icon="fa-solid:arrow-right" class="u-icon"></iconify-icon>
+  </div>
+  <div class="container">
+    <div class="mb-20 text-center" data-aos="fade-up">
+      <SectionTitle title="NEWS" />
+    </div>
+    <div class="swiper l-home-news__swiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        {
+          newsList.map((item) => (
+            <div class="swiper-slide l-home-news__slide">
+              <Card entry={item} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .l-home-news {
+    &__swiper {
+      padding: rem(16);
+    }
+
+    &__slide {
+      @include media(max-sm) {
+        width: 70vw;
+      }
+    }
+
+    &__swiper-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: var(--spacing-4);
+      background-color: var(--color-gray-light);
+      font-size: var(--text-md);
+      color: var(--color-gray-mid);
+      z-index: 10;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: var(--color-black);
+        color: var(--color-secondary);
+        box-shadow: 0 0 var(--spacing-1) var(--color-black-80);
+      }
+
+      &:active {
+        background-color: var(--color-secondary);
+        color: var(--color-black);
+        box-shadow: 0 0 var(--spacing-1) var(--color-gray-light-80);
+        transition: 0s;
+      }
+
+      &.--prev {
+        left: 0;
+        border-radius: 0 var(--spacing-4) var(--spacing-4) 0;
+      }
+
+      &.--next {
+        right: 0;
+        border-radius: var(--spacing-4) 0 0 var(--spacing-4);
+      }
+    }
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import { SITE_BASE_PATH } from '@/consts';
+import { getCollection } from 'astro:content';
+
+const newsCategories = (await getCollection('newsCategories')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<ul class="flex flex-wrap mb-20" style="gap: 0 var(--spacing-6)">
+  <!-- li -->
+  <!--   a(href=`${basePath}/news/`) 全部 -->
+  <!-- li -->
+  <!--   a(href=`${basePath}/news/category/latest.html`) 熱門消息 -->
+  <!-- li -->
+  <!--   a(href=`${basePath}/news/category/design.html`) 設計快訊 -->
+  {
+    newsCategories.map(({ data }) => {
+      const path = data.path ? `category/${data.path}/` : '';
+
+      return (
+        <li>
+          <a href={`${SITE_BASE_PATH}/news/${path}`} class="l-news-list__btn">
+            {data.title}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style lang="scss">
+  .l-news-list__btn {
+    font-size: var(--text-xl);
+    font-weight: 900;
+    color: var(--color-gray);
+    transition: color 0.3s;
+
+    &:hover,
+    &.is-active {
+      color: var(--color-gray-light);
+    }
+  }
+</style>

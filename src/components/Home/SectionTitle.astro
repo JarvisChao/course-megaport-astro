@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<h2 class="o-section-title">
+  {title}
+  <span class="text-lg font-900 tracking-tighter">MEGAPORT FESTIVAL</span>
+</h2>
+
+<style lang="scss">
+  .o-section-title {
+    font-size: var(--text-5xl);
+    font-weight: 900;
+    line-height: var(--leading-tight);
+    letter-spacing: rem(-3);
+    color: var(--color-secondary);
+  }
+</style>

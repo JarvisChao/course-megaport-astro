@@ -1,22 +1,3 @@
-@import './functions';
-@import './mixins';
-// @import './maps';
-@import './variables';
-@import './base';
-@import './utilities';
-
-@import './objects/title';
-@import './objects/btn';
-
-@import './components/blockade';
-@import './components/artist-card';
-@import './components/card';
-
-@import './layouts/header';
-@import './layouts/hero';
-@import './layouts/lineup';
-@import './layouts/news';
-@import './layouts/about';
-@import './layouts/contact';
-@import './layouts/footer';
-
+@use 'variables';
+@use 'base';
+@use 'utilities';

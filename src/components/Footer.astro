@@ -1,0 +1,245 @@
+---
+import { SITE_BASE_PATH } from '@/consts';
+---
+
+<script>
+  import longArrowAltUpIcon from '@iconify-icons/fa-solid/long-arrow-alt-up';
+  import facebookIcon from '@iconify-icons/mingcute/facebook-fill';
+  import instagramIcon from '@iconify-icons/mingcute/ins-fill';
+  import youtubeIcon from '@iconify-icons/mingcute/youtube-fill';
+  import { addIcon } from 'iconify-icon';
+
+  addIcon('fa-solid:long-arrow-alt-up', longArrowAltUpIcon);
+  addIcon('mingcute:facebook-fill', facebookIcon);
+  addIcon('mingcute:ins-fill', instagramIcon);
+  addIcon('mingcute:youtube-fill', youtubeIcon);
+</script>
+
+<footer class="l-footer">
+  <!-- onclick="lenis.scrollTo('body')" -->
+  <div class="o-gotop" onclick="window.lenis?.scrollTo(0, { duration: 1.5 })">
+    <iconify-icon icon="fa-solid:long-arrow-alt-up" class="u-icon-sm"
+    ></iconify-icon>
+    <span class="font-900">TOP</span>
+  </div>
+  <div class="l-footer-date">
+    <div class="l-footer-date__bg-mask" data-parallax-offset="200">
+      <img
+        data-src={`${SITE_BASE_PATH}/img/footer/bg.jpg`}
+        alt="大港開唱資訊"
+        class="js-lazy u-object-fit --parallax"
+      />
+    </div>
+    <div class="l-footer-date__img-mask">
+      <img
+        data-src={`${SITE_BASE_PATH}/img/footer/date.svg`}
+        alt="大港開唱資訊"
+        class="js-lazy --bg-clean"
+      />
+    </div>
+  </div>
+  <div class="l-footer__menu">
+    <ul class="l-footer__btn-box">
+      <li class="l-footer__btn-wrap">
+        <a href={`${SITE_BASE_PATH}/#lineup`} class="l-footer__btn">
+          <span class="l-footer__text --en">LINEUP</span>
+          <span class="l-footer__text --zh">演出陣容</span>
+        </a>
+      </li>
+      <li class="l-footer__btn-wrap">
+        <a href={`${SITE_BASE_PATH}/#news`} class="l-footer__btn">
+          <span class="l-footer__text --en">NEWS</span>
+          <span class="l-footer__text --zh">最新消息</span>
+        </a>
+      </li>
+      <li class="l-footer__btn-wrap">
+        <a href={`${SITE_BASE_PATH}/#about`} class="l-footer__btn">
+          <span class="l-footer__text --en">ABOUT</span>
+          <span class="l-footer__text --zh">關於大港</span>
+        </a>
+      </li>
+      <li class="l-footer__btn-wrap">
+        <a href="##" class="l-footer__btn">
+          <span class="l-footer__text --en">TIMETABLE</span>
+          <span class="l-footer__text --zh">節目表</span>
+        </a>
+      </li>
+      <li class="l-footer__btn-wrap">
+        <a href="##" class="l-footer__btn">
+          <span class="l-footer__text --en">TICKET</span>
+          <span class="l-footer__text --zh">購票資訊</span>
+        </a>
+      </li>
+      <li class="l-footer__btn-wrap">
+        <a href={`${SITE_BASE_PATH}/contact/`} class="l-footer__btn">
+          <span class="l-footer__text --en">MAP</span>
+          <span class="l-footer__text --zh">地圖導覽</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="l-footer__link-box">
+      <li class="l-footer__link-wrap">
+        <!-- .leading-1 解決高度問題 -->
+        <a
+          href="https://www.facebook.com//megaportfest/"
+          target="_blank"
+          class="leading-1"
+        >
+          <iconify-icon icon="mingcute:facebook-fill" class="u-icon"
+          ></iconify-icon>
+        </a>
+      </li>
+      <li class="l-footer__link-wrap">
+        <a
+          href="https://www.instagram.com/megaportfest/"
+          target="_blank"
+          class="leading-1"
+        >
+          <iconify-icon icon="mingcute:ins-fill" class="u-icon"></iconify-icon>
+        </a>
+      </li>
+      <li class="l-footer__link-wrap">
+        <a
+          href="https://www.youtube.com/channel/UC7xWU14_GGYKVqoSLg1M8EQ/feed"
+          target="_blank"
+          class="leading-1"
+        >
+          <iconify-icon icon="mingcute:youtube-fill" class="u-icon"
+          ></iconify-icon>
+        </a>
+      </li>
+    </ul>
+    <span class="text-sm">© 2024 Jarvis Course. All rights reserved.</span>
+  </div>
+</footer>
+
+<style lang="scss">
+  .l-footer-date {
+    padding: var(--spacing-40) 4vw;
+
+    &__bg-mask {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img-mask {
+      max-width: rem(300);
+      margin: 0 auto;
+
+      @include media(max-sm) {
+        max-width: rem(240);
+      }
+    }
+  }
+
+  .l-footer {
+    &__menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-10) 4vw;
+      background-color: var(--color-primary);
+    }
+
+    &__btn-box {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: rem(-5);
+    }
+
+    &__btn-wrap {
+      margin-top: rem(5);
+
+      &:not(:last-child) {
+        margin-right: var(--spacing-6);
+      }
+    }
+
+    &__btn.is-active {
+      color: var(--color-secondary);
+    }
+
+    &__btn:hover &__text {
+      &.--en {
+        opacity: 0;
+      }
+
+      &.--zh {
+        color: var(--color-secondary);
+        opacity: 1;
+      }
+    }
+
+    &__text {
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+      transition:
+        color 0.3s,
+        opacity 0.3s;
+
+      &.--en {
+        font-family: var(--font-en);
+      }
+
+      &.--zh {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--font-sans);
+        opacity: 0;
+      }
+    }
+
+    &__link-box {
+      display: flex;
+      align-items: center;
+      margin-top: var(--spacing-4);
+      margin-bottom: var(--spacing-4);
+    }
+
+    &__link-wrap {
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+
+      &:not(:last-child) {
+        margin-right: var(--spacing-4);
+      }
+    }
+  }
+
+  .o-gotop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -30%);
+    padding: var(--spacing-2);
+    border-radius: var(--spacing-2);
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 0 4px var(--color-primary);
+    font-family: var(--font-en);
+    color: var(--color-primary);
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    z-index: 10;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-black);
+    }
+  }
+</style>

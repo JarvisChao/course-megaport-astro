@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import InnerHero from '@/components/InnerHero.astro';
+import NewsCategory from '@/components/NewsCategory.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  currentCategory: CollectionEntry<'newsCategories'>['data'];
+}
+
+const { currentCategory } = Astro.props;
+---
+
+<BaseLayout
+  pageTitle={currentCategory.title}
+  description={currentCategory.description || undefined}
+>
+  <main class="l-main">
+    <InnerHero>
+      <h2 class="text-3xl font-900">{currentCategory.title}</h2>
+    </InnerHero>
+    <section class="l-news-list">
+      <div class="container">
+        <NewsCategory />
+        <slot />
+      </div>
+    </section>
+  </main>
+</BaseLayout>

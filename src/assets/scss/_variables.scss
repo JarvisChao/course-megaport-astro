@@ -1,7 +1,18 @@
+@use 'functions' as *;
+@use 'mixins' as *;
+
 :root {
   // 所有數值除以 16 = 乘以 1 / 16
   // 1rem 是為了計算時加上 rem 單位
   --html-spacing: 1rem / 16;
+
+  // Container
+  --container-md: calc(var(--html-spacing) * 1600);
+  --container-default: calc(var(--html-spacing) * 1520);
+  --container-sm: calc(var(--html-spacing) * 1440);
+  --container-xs: calc(var(--html-spacing) * 1360);
+  --container-2xs: calc(var(--html-spacing) * 1280);
+  --container-3xs: calc(var(--html-spacing) * 880);
 
   // Section
   --section-spacing-x: 4vw;
@@ -10,180 +21,71 @@
     --section-spacing-x: 1vw;
   }
 
-  // Container
-  --container-md: #{rem(1600)};
-  --container-default: #{rem(1520)};
-  --container-sm: #{rem(1440)};
-  --container-xs: #{rem(1360)};
-  --container-2xs: #{rem(1280)};
-  --container-3xs: #{rem(880)};
-
-  // @each $size, $value in $container-map {
-  //   --container-#{$size}: #{$value};
-  // }
-
   // Spacing
-  // @each $spacing, $vw in $spacing-map {
-  //   @if ($spacing == auto) {
-  //     --spacing-auto: auto
-  //   } @else {
-  //     --spacing-#{$spacing}: #{rem(calc($spacing * 4))};
-  //   }
-  // }
-  // @include media(max-sm) {
-  //   @each $spacing, $vw in $spacing-map {
-  //     @if $vw {
-  //       --spacing-#{$spacing}: #{$vw};
-  //     }
-  //   }
-  // }
-  --spacing-40: #{rem(160)};
-  --spacing-36: #{rem(144)};
-  --spacing-32: #{rem(128)};
-  --spacing-30: #{rem(120)};
-  --spacing-26: #{rem(104)};
-  --spacing-24: #{rem(96)};
-  --spacing-22: #{rem(88)};
-  --spacing-20: #{rem(80)};
-  --spacing-18: #{rem(72)};
-  --spacing-16: #{rem(64)};
-  --spacing-14: #{rem(56)};
-  --spacing-12: #{rem(48)};
-  --spacing-10: #{rem(40)};
-  --spacing-9: #{rem(36)};
-  --spacing-8: #{rem(32)};
-  --spacing-6: #{rem(24)};
-  --spacing-5: #{rem(20)};
-  --spacing-4: #{rem(16)};
-  --spacing-3: #{rem(12)};
-  --spacing-2: #{rem(8)};
-  --spacing-1: #{rem(4)};
+  --u-spacing-40: #{rem(160)};
+  --u-spacing-36: #{rem(144)};
+  --u-spacing-32: #{rem(128)};
+  --u-spacing-30: #{rem(120)};
+  --u-spacing-26: #{rem(104)};
+  --u-spacing-24: #{rem(96)};
+  --u-spacing-22: #{rem(88)};
+  --u-spacing-20: #{rem(80)};
+  --u-spacing-18: #{rem(72)};
+  --u-spacing-16: #{rem(64)};
+  --u-spacing-14: #{rem(56)};
+  --u-spacing-12: #{rem(48)};
+  --u-spacing-10: #{rem(40)};
+  --u-spacing-9: #{rem(36)};
+  --u-spacing-8: #{rem(32)};
+  --u-spacing-6: #{rem(24)};
+  --u-spacing-5: #{rem(20)};
+  --u-spacing-4: #{rem(16)};
+  --u-spacing-3: #{rem(12)};
+  --u-spacing-2: #{rem(8)};
+  --u-spacing-1: #{rem(4)};
   @include media(max-sm) {
-    --spacing-40: 24vw;
-    --spacing-36: 22vw;
-    --spacing-32: 21vw;
-    --spacing-30: 20vw;
-    --spacing-26: 19vw;
-    --spacing-24: 18vw;
-    --spacing-22: 17vw;
-    --spacing-20: 16vw;
-    --spacing-18: 15vw;
-    --spacing-16: 14vw;
-    --spacing-14: 12vw;
-    --spacing-12: 10vw;
-    --spacing-10: 8vw;
-    --spacing-9: 7vw;
-    --spacing-8: 6vw;
-    --spacing-6: 5vw;
-    --spacing-5: 4vw;
-    --spacing-4: 3vw;
-    --spacing-3: 2vw;
+    --u-spacing-40: 24vw;
+    --u-spacing-36: 22vw;
+    --u-spacing-32: 21vw;
+    --u-spacing-30: 20vw;
+    --u-spacing-26: 19vw;
+    --u-spacing-24: 18vw;
+    --u-spacing-22: 17vw;
+    --u-spacing-20: 16vw;
+    --u-spacing-18: 15vw;
+    --u-spacing-16: 14vw;
+    --u-spacing-14: 12vw;
+    --u-spacing-12: 10vw;
+    --u-spacing-10: 8vw;
+    --u-spacing-9: 7vw;
+    --u-spacing-8: 6vw;
+    --u-spacing-6: 5vw;
+    --u-spacing-5: 4vw;
+    --u-spacing-4: 3vw;
+    --u-spacing-3: 2vw;
   }
-
-  // Font
-  // @each $type, $value in $font-map {
-  //   --font-#{$type}: #{$value};
-  // }
-  --font-sans: 'Noto Sans TC', sans-serif;
-  --font-en: 'Roboto', 'Arial', sans-serif;
 
   // Text
-  // @each $text, $opts in $text-map {
-  //   @each $point, $value in $opts {
-  //     @if $point == default {
-  //       --text-#{$text}: #{$value};
-  //     }
-  //     @else {
-  //       @include media($point) {
-  //         --text-#{$text}: #{$value};
-  //       }
-  //     }
-  //   }
-  // }
-  --text-5xl: #{rem(64)};
-  --text-4xl: #{rem(40)};
-  --text-3xl: #{rem(32)};
-  --text-2xl: #{rem(28)};
-  --text-xl: #{rem(24)};
-  --text-lg: #{rem(20)};
-  --text-md: #{rem(18)};
-  --text-base: #{rem(16)};
-  --text-sm: #{rem(14)};
-  --text-xs: #{rem(12)};
+  --u-text-5xl: #{rem(64)};
+  --u-text-4xl: #{rem(40)};
+  --u-text-3xl: #{rem(32)};
+  --u-text-2xl: #{rem(28)};
+  --u-text-xl: #{rem(24)};
+  --u-text-lg: #{rem(20)};
+  --u-text-md: #{rem(18)};
+  --u-text-base: #{rem(16)};
+  --u-text-sm: #{rem(14)};
+  --u-text-xs: #{rem(12)};
   @include media(max-md) {
-    --text-4xl: #{rem(36)};
+    --u-text-4xl: #{rem(36)};
   }
   @include media(max-sm) {
-    --text-5xl: #{rem(62)};
-    --text-4xl: #{rem(32)};
-    --text-3xl: #{rem(28)};
-    --text-2xl: #{rem(24)};
-    --text-xl: #{rem(22)};
-    --text-lg: #{rem(18)};
-    --text-md: #{rem(17)};
+    --u-text-5xl: #{rem(62)};
+    --u-text-4xl: #{rem(32)};
+    --u-text-3xl: #{rem(28)};
+    --u-text-2xl: #{rem(24)};
+    --u-text-xl: #{rem(22)};
+    --u-text-lg: #{rem(18)};
+    --u-text-md: #{rem(17)};
   }
-
-
-  // Line Height
-  // @each $size, $value in $leading-map {
-  //   --leading-#{$size}: #{$value};
-  // }
-  --leading-none: 1;
-  --leading-tight: 1.2;
-  --leading-snug: 1.4;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.6;
-  --leading-loose: 1.7;
-
-  // Letter Spacing
-  // @each $size, $value in $tracking-map {
-  //   --tracking-#{$size}: #{$value};
-  // }
-  --tracking-tighter: 0.02em;
-  --tracking-tight: 0.04em;
-  --tracking-normal: 0.08em;
-  --tracking-wide: 0.12em;
-  --tracking-wider: 0.16em;
-  --tracking-widest: 0.18em;
-  
-
-  // Colors
-  // @each $color, $opts in $color-map {
-  //   $string-color: '' + $color;
-  //   @each $subfix, $value in $opts {
-  //     @if $subfix == default {
-  //       --color-#{$string-color}: #{$value};
-  //       // --color-primary: #0F4841
-  //     }
-  //     @else {
-  //       --color-#{$string-color}-#{$subfix}: #{$value};
-  //       // --color-primary-40: #006D40
-  //     }
-  //   }
-  // }
-  --color-primary: #ef8322;
-  
-  --color-secondary: #96e881;
-  --color-secondary-mid: #B2E2A6;
-
-  --color-black: #292929;
-  --color-black-rgb: 41, 41, 41;
-  --color-black-80: rgba(var(--color-black-rgb), 0.8);
-  --color-black-20: rgba(var(--color-black-rgb), 0.2);
-
-  --color-gray: #464646;
-
-  --color-gray-mid: #9B9B9B;
-  --color-gray-mid-rgb: 155, 155, 155;
-  --color-gray-mid-40: rgba(var(--color-gray-mid-rgb), 0.4);
-
-  --color-gray-light: #F5F5F5;
-  --color-gray-light-rgb: 245, 245, 245;
-  --color-gray-light-80: rgba(var(--color-gray-light-rgb), 0.8);
-
-  --color-white: #FFF;
-  --color-white-rgb: 255, 255, 255;
-  --color-white-40: rgba(var(--color-white-rgb), 0.4);
-
-  --color-skeleton: var(--color-gray-mid);
 }

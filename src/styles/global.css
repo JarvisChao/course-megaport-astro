@@ -1,0 +1,99 @@
+@layer theme, bootstrap, base, utilities;
+
+@import 'bootstrap/dist/css/bootstrap-grid.min.css' layer(bootstrap);
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@source not inline("container");
+
+/*
+  一般 @theme 只會依照你實際用到的 class 產生相關 CSS 變數；
+  static 則會強制把該區塊內的 theme variables 都輸出成 CSS 變數，
+  即使沒有被 utility 使用
+*/
+@theme static {
+  /* Spacing */
+  --spacing-40: var(--u-spacing-40);
+  --spacing-36: var(--u-spacing-36);
+  --spacing-32: var(--u-spacing-32);
+  --spacing-30: var(--u-spacing-30);
+  --spacing-26: var(--u-spacing-26);
+  --spacing-24: var(--u-spacing-24);
+  --spacing-22: var(--u-spacing-22);
+  --spacing-20: var(--u-spacing-20);
+  --spacing-18: var(--u-spacing-18);
+  --spacing-16: var(--u-spacing-16);
+  --spacing-14: var(--u-spacing-14);
+  --spacing-12: var(--u-spacing-12);
+  --spacing-10: var(--u-spacing-10);
+  --spacing-9: var(--u-spacing-9);
+  --spacing-8: var(--u-spacing-8);
+  --spacing-6: var(--u-spacing-6);
+  --spacing-5: var(--u-spacing-5);
+  --spacing-4: var(--u-spacing-4);
+  --spacing-3: var(--u-spacing-3);
+  --spacing-2: var(--u-spacing-2);
+  --spacing-1: var(--u-spacing-1);
+
+  /* Font */
+  --font-sans: 'Noto Sans TC', sans-serif;
+  --font-en: 'Roboto', 'Arial', sans-serif;
+
+  /* Font Weight */
+  --font-weight-900: 900;
+  --font-weight-700: 700;
+  --font-weight-600: 600;
+  --font-weight-500: 500;
+  --font-weight-400: 400;
+  --font-weight-300: 300;
+
+  /* Text */
+  --text-*: initial;
+  --text-5xl: var(--u-text-5xl);
+  --text-4xl: var(--u-text-4xl);
+  --text-3xl: var(--u-text-3xl);
+  --text-2xl: var(--u-text-2xl);
+  --text-xl: var(--u-text-xl);
+  --text-lg: var(--u-text-lg);
+  --text-md: var(--u-text-md);
+  --text-base: var(--u-text-base);
+  --text-sm: var(--u-text-sm);
+  --text-xs: var(--u-text-xs);
+
+  /* Line Height */
+  --leading-none: 1;
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+  --leading-loose: 1.7;
+
+  /* Letter Spacing */
+  --tracking-tighter: 0.02em;
+  --tracking-tight: 0.04em;
+  --tracking-normal: 0.08em;
+  --tracking-wide: 0.12em;
+  --tracking-wider: 0.16em;
+  --tracking-widest: 0.18em;
+
+  /* Colors */
+  --color-primary: rgb(239 131 34);
+
+  --color-secondary: rgb(150 232 129);
+  --color-secondary-mid: rgb(178 226 166);
+
+  --color-black: rgb(41 41 41);
+  --color-black-80: rgb(from var(--color-black) r g b / 0.8);
+  --color-black-20: rgb(from var(--color-black) r g b / 0.2);
+
+  --color-gray: rgb(70 70 70);
+
+  --color-gray-mid: rgb(155 155 155);
+  --color-gray-mid-40: rgb(from var(--color-gray-mid) r g b / 0.4);
+
+  --color-gray-light: rgb(245 245 245);
+  --color-gray-light-80: rgb(from var(--color-gray-light) r g b / 0.8);
+
+  --color-white: rgb(255 255 255);
+  --color-white-40: rgb(from var(--color-white) r g b / 0.4);
+}
