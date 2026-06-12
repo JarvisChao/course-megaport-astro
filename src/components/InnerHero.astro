@@ -2,16 +2,23 @@
 import Blockade from '@/components/Blockade.astro';
 
 interface Props {
+  title?: string;
   blockade?: boolean;
   blockadeText?: string;
 }
 
-const { blockade = false, blockadeText } = Astro.props;
+const { title, blockade = false, blockadeText } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
+const heroBgImage = `${basePath}/img/footer/bg.jpg`;
 ---
 
 <div class="l-hero-inner" data-aos="fade-down">
+  <img src={heroBgImage} alt="" class="u-object-fit --abs" aria-hidden="true" />
   {blockade && <Blockade text={blockadeText} class="l-hero-inner__blockade" />}
-  <slot />
+  <div class="z-1">
+    {title && <h2 class="text-3xl font-900 text-primary">{title}</h2>}
+    <slot />
+  </div>
 </div>
 
 <style lang="scss">
@@ -20,17 +27,7 @@ const { blockade = false, blockadeText } = Astro.props;
     justify-content: center;
     align-items: center;
     height: 40vh;
-    background-image: url('/course-megaport/img/footer/bg.jpg');
-    background-size: cover;
-    background-position: center center;
-
-    @include media(max-2xl) {
-      margin-top: rem(85);
-    }
-
-    @include media(max-sm) {
-      margin-top: rem(55);
-    }
+    overflow: hidden;
 
     &::after {
       content: '';

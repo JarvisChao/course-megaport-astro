@@ -16,9 +16,7 @@ const { currentCategory } = Astro.props;
   description={currentCategory.description || undefined}
 >
   <main class="l-main">
-    <InnerHero>
-      <h2 class="text-3xl font-900">{currentCategory.title}</h2>
-    </InnerHero>
+    <InnerHero title={currentCategory.title} />
     <section class="l-news-list">
       <div class="container">
         <NewsCategory />
