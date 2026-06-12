@@ -39,6 +39,7 @@ const siteUrl = Astro.site?.origin;
 const normalizedImage = image.replace(/^\//, '');
 const pageUrl = Astro.url.href;
 const imageUrl = `${siteUrl}${basePath}/${normalizedImage}`;
+const bodyBgImage = `url('${basePath}/img/bg-dots.png')`;
 ---
 
 <script>
@@ -53,11 +54,14 @@ const imageUrl = `${siteUrl}${basePath}/${normalizedImage}`;
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
+
     <!-- 教學用網站，因此設置此 meta 防止瀏覽器索引 -->
     <meta name="robots" content="noindex, nofollow" />
+
     <!-- 防止 Iphone 自訂偵測電話，影響樣式 -->
     <meta name="format-detection" content="telephone=no" />
     <meta http-equiv="x-rim-auto-match" content="none" />
+
     <!-- FB 縮圖資訊，偵錯及預覽工具 https://developers.facebook.com/tools/debug/ -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={pageUrl} />
@@ -106,3 +110,9 @@ const imageUrl = `${siteUrl}${basePath}/${normalizedImage}`;
     <slot name="footer" />
   </body>
 </html>
+
+<style is:global define:vars={{ bodyBgImage }}>
+  body {
+    background-image: var(--bodyBgImage);
+  }
+</style>
