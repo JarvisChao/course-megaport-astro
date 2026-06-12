@@ -14,10 +14,16 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
 const slug = Astro.params.slug ?? entry.id;
 const basePath = import.meta.env.BASE_URL;
-const siteUrl = Astro.site?.origin ?? Astro.url.origin;
-const url = `${siteUrl}${basePath}/news/${slug}`;
+if (!Astro.site) {
+  throw new Error('Missing site in astro.config.mjs.');
+}
+
+const siteUrl = Astro.site.origin;
+const url = Astro.url.href;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
@@ -36,7 +42,6 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  path={`/news/${slug}`}
   pageTitle={entry.data.title}
   infoTitle=""
   description={entry.data.description}
@@ -56,10 +61,7 @@ const jsonLd = {
       </div>
       <div class="container-2xs">
         <div class="l-news-detail__content">
-          <img
-            src={`${basePath}/${entry.data.image}`}
-            alt={entry.data.title}
-          />
+          <img src={`${basePath}/${entry.data.image}`} alt={entry.data.title} />
           <div class="u-editor">
             <!-- 遇到後台編輯器，還原 reset 設定值 -->
             <Content />
