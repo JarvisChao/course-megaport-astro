@@ -2,13 +2,18 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath } from 'node:url';
 
+import sitemap from '@astrojs/sitemap';
+
 const scssPath = fileURLToPath(new URL('./src/assets/scss', import.meta.url));
 const srcPath = fileURLToPath(new URL('./src', import.meta.url));
+const siteBaseUrl = 'https://jarvischao.github.io';
+const siteBasePath = '/course-megaport';
 
 export default defineConfig({
-  site: 'https://jarvischao.github.io',
-  base: '/course-megaport',
+  site: siteBaseUrl,
+  base: siteBasePath,
   trailingSlash: 'always',
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -28,4 +33,10 @@ export default defineConfig({
       },
     },
   },
+
+  integrations: [
+    sitemap({
+      changefreq: 'daily',
+    }),
+  ],
 });

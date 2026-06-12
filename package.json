@@ -11,6 +11,7 @@
     "format": "prettier --write \"src/**/*.{astro,ts}\" \"*.{json,mjs}\""
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource/noto-sans-tc": "^5.2.8",
     "@fontsource/roboto": "^5.2.8",
     "@iconify-icons/fa-solid": "^1.2.1",

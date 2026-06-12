@@ -68,9 +68,11 @@ const title = `${pageTitle ? `${pageTitle} - ` : ''}${SITE_TITLE}${infoTitle ? `
     />
     <meta property="og:description" content={description} />
     <meta name="description" content={description} />
+
     <meta property="og:title" content={title} />
     <!-- <Page Title> - <Site Name>｜<Info Title> -->
     <title>{title}</title>
+
     <!-- 網頁 icon -->
     <link
       rel="apple-touch-icon"
@@ -98,6 +100,7 @@ const title = `${pageTitle ? `${pageTitle} - ` : ''}${SITE_TITLE}${infoTitle ? `
     />
     <meta name="msapplication-TileColor" content="#ef8322" />
     <meta name="theme-color" content="#ffffff" />
+
     <slot name="head" />
   </head>
   <body>
