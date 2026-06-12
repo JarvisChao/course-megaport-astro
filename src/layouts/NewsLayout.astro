@@ -9,9 +9,13 @@ interface Props {
 }
 
 const { currentCategory } = Astro.props;
+const path = currentCategory.path
+  ? `/news/category/${currentCategory.path}`
+  : '/news';
 ---
 
 <BaseLayout
+  path={path}
   pageTitle={currentCategory.title}
   description={currentCategory.description || undefined}
 >

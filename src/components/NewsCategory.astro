@@ -1,7 +1,7 @@
 ---
-import { SITE_BASE_PATH } from '@/consts';
 import { getCollection } from 'astro:content';
 
+const basePath = import.meta.env.BASE_URL;
 const newsCategories = (await getCollection('newsCategories')).sort(
   (a, b) => a.data.order - b.data.order,
 );
@@ -16,11 +16,11 @@ const newsCategories = (await getCollection('newsCategories')).sort(
   <!--   a(href=`${basePath}/news/category/design.html`) 設計快訊 -->
   {
     newsCategories.map(({ data }) => {
-      const path = data.path ? `category/${data.path}/` : '';
+      const path = data.path ? `/category/${data.path}` : '';
 
       return (
         <li>
-          <a href={`${SITE_BASE_PATH}/news/${path}`} class="l-news-list__btn">
+          <a href={`${basePath}/news${path}`} class="l-news-list__btn">
             {data.title}
           </a>
         </li>

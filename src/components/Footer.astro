@@ -1,5 +1,5 @@
 ---
-import { SITE_BASE_PATH } from '@/consts';
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <script>
@@ -25,14 +25,14 @@ import { SITE_BASE_PATH } from '@/consts';
   <div class="l-footer-date">
     <div class="l-footer-date__bg-mask" data-parallax-offset="200">
       <img
-        data-src={`${SITE_BASE_PATH}/img/footer/bg.jpg`}
+        data-src={`${basePath}/img/footer/bg.jpg`}
         alt="大港開唱資訊"
         class="js-lazy u-object-fit --parallax"
       />
     </div>
     <div class="l-footer-date__img-mask">
       <img
-        data-src={`${SITE_BASE_PATH}/img/footer/date.svg`}
+        data-src={`${basePath}/img/footer/date.svg`}
         alt="大港開唱資訊"
         class="js-lazy --bg-clean"
       />
@@ -41,19 +41,19 @@ import { SITE_BASE_PATH } from '@/consts';
   <div class="l-footer__menu">
     <ul class="l-footer__btn-box">
       <li class="l-footer__btn-wrap">
-        <a href={`${SITE_BASE_PATH}/#lineup`} class="l-footer__btn">
+        <a href={`${basePath}/#lineup`} class="l-footer__btn">
           <span class="l-footer__text --en">LINEUP</span>
           <span class="l-footer__text --zh">演出陣容</span>
         </a>
       </li>
       <li class="l-footer__btn-wrap">
-        <a href={`${SITE_BASE_PATH}/#news`} class="l-footer__btn">
+        <a href={`${basePath}/#news`} class="l-footer__btn">
           <span class="l-footer__text --en">NEWS</span>
           <span class="l-footer__text --zh">最新消息</span>
         </a>
       </li>
       <li class="l-footer__btn-wrap">
-        <a href={`${SITE_BASE_PATH}/#about`} class="l-footer__btn">
+        <a href={`${basePath}/#about`} class="l-footer__btn">
           <span class="l-footer__text --en">ABOUT</span>
           <span class="l-footer__text --zh">關於大港</span>
         </a>
@@ -71,7 +71,7 @@ import { SITE_BASE_PATH } from '@/consts';
         </a>
       </li>
       <li class="l-footer__btn-wrap">
-        <a href={`${SITE_BASE_PATH}/contact/`} class="l-footer__btn">
+        <a href={`${basePath}/contact`} class="l-footer__btn">
           <span class="l-footer__text --en">MAP</span>
           <span class="l-footer__text --zh">地圖導覽</span>
         </a>

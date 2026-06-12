@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { SITE_BASE_PATH, SITE_BASE_URL, SITE_TITLE } from '@/consts';
+import { SITE_TITLE } from '@/consts';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -15,7 +15,9 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const slug = Astro.params.slug ?? entry.id;
-const url = `${SITE_BASE_URL}${SITE_BASE_PATH}/news/${slug}/`;
+const basePath = import.meta.env.BASE_URL;
+const siteUrl = Astro.site?.origin ?? Astro.url.origin;
+const url = `${siteUrl}${basePath}/news/${slug}`;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
@@ -23,18 +25,18 @@ const jsonLd = {
   publisher: {
     '@type': 'Organization',
     name: SITE_TITLE,
-    logo: `${SITE_BASE_URL}${SITE_BASE_PATH}/img/logo/logo.svg`,
+    logo: `${siteUrl}${basePath}/img/logo/logo.svg`,
   },
   headline: entry.data.title,
   mainEntityOfPage: url,
   articleBody: entry.data.description,
-  image: `${SITE_BASE_URL}${SITE_BASE_PATH}/${entry.data.image}`,
+  image: `${siteUrl}${basePath}/${entry.data.image}`,
   datePublished: entry.data.publishDate,
 };
 ---
 
 <BaseLayout
-  path={`/news/${slug}/`}
+  path={`/news/${slug}`}
   pageTitle={entry.data.title}
   infoTitle=""
   description={entry.data.description}
@@ -55,7 +57,7 @@ const jsonLd = {
       <div class="container-2xs">
         <div class="l-news-detail__content">
           <img
-            src={`${SITE_BASE_PATH}/${entry.data.image}`}
+            src={`${basePath}/${entry.data.image}`}
             alt={entry.data.title}
           />
           <div class="u-editor">

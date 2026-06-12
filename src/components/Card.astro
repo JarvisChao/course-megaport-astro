@@ -1,6 +1,5 @@
 ---
 import Btn from '@/components/Btn.astro';
-import { SITE_BASE_PATH } from '@/consts';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -9,7 +8,8 @@ interface Props {
 
 const { entry } = Astro.props;
 const data = entry.data;
-const href = `${SITE_BASE_PATH}/news/${entry.id}/`;
+const basePath = import.meta.env.BASE_URL;
+const href = `${basePath}/news/${entry.id}`;
 ---
 
 <article class="c-card">
@@ -20,7 +20,7 @@ const href = `${SITE_BASE_PATH}/news/${entry.id}/`;
       <!-- 所以圖片要加上 --abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio -->
       <!-- 等於是 u-img-ratio 當容器，讓 img 去撐滿 -->
       <img
-        src={`${SITE_BASE_PATH}/${data.image}`}
+        src={`${basePath}/${data.image}`}
         alt={data.title}
         class="u-object-fit --abs"
       />

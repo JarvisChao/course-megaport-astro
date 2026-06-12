@@ -1,7 +1,8 @@
 ---
 import Btn from '@/components/Btn.astro';
 import SectionTitle from '@/components/Home/SectionTitle.astro';
-import { SITE_BASE_PATH } from '@/consts';
+
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <section id="about" class="--gradient l-about">
@@ -19,7 +20,7 @@ import { SITE_BASE_PATH } from '@/consts';
             <!-- abs 是因為父層沒有固定高度，會導致吃原圖高度而跑版 -->
             <!-- 要讓圖片跟著父層吃 col 的 stretch 就要加上 abs -->
             <img
-              src={`${SITE_BASE_PATH}/img/about/about.jpg`}
+              src={`${basePath}/img/about/about.jpg`}
               alt="關於大港開唱"
               class="u-object-fit --abs --parallax"
             />
@@ -45,7 +46,7 @@ import { SITE_BASE_PATH } from '@/consts';
           <!-- div(class="o-btn --align-right mt-16") -->
           <!-- a(href=`${basePath}/about.html` target="_blank" class="o-btn__link") MORE -->
           <Btn
-            href={`${SITE_BASE_PATH}/about/`}
+            href={`${basePath}/about`}
             align="right"
             class="mt-16"
             data-aos="fade-up">MORE</Btn

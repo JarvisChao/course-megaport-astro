@@ -1,5 +1,7 @@
 ---
-import { SITE_BASE_PATH, SITE_TITLE } from '@/consts';
+import { SITE_TITLE } from '@/consts';
+
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <script>
@@ -31,7 +33,7 @@ import { SITE_BASE_PATH, SITE_TITLE } from '@/consts';
           <div class="swiper-slide l-hero__slide">
             <div class="l-hero__img-mask">
               <img
-                data-src={`${SITE_BASE_PATH}/img/banner/img-${number}.jpg`}
+                data-src={`${basePath}/img/banner/img-${number}.jpg`}
                 alt={SITE_TITLE}
                 class="u-object-fit js-lazy"
               />

@@ -40,10 +40,9 @@ const pathname = location.pathname;
 document.querySelectorAll('a').forEach((item) => {
   const href = item.getAttribute('href');
   if (!href || href.startsWith('#') || href === '##') return;
+  if (item.origin !== location.origin) return;
 
-  const url = new URL(href, location.origin);
-
-  if (!url.hash && pathname === url.pathname) {
+  if (!item.hash && pathname === item.pathname) {
     item.classList.add('is-active');
   }
 });

@@ -1,5 +1,4 @@
 ---
-import { SITE_BASE_PATH } from '@/consts';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -11,6 +10,7 @@ interface Props {
 }
 
 const { data, size = '', direction = '' } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
 ---
 
 <script>
@@ -44,7 +44,7 @@ const { data, size = '', direction = '' } = Astro.props;
         <!-- 所以圖片要加上 --abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio -->
         <!-- 等於是 u-img-ratio 當容器，讓 img 去撐滿 -->
         <img
-          data-src={`${SITE_BASE_PATH}/${data.image}`}
+          data-src={`${basePath}/${data.image}`}
           alt={`大港開唱藝人名單 ${data.title}`}
           class="u-object-fit --abs js-lazy"
         />
@@ -55,7 +55,7 @@ const { data, size = '', direction = '' } = Astro.props;
         style="--ratio: 3/2"
       >
         <img
-          data-src={`${SITE_BASE_PATH}/${data.image}`}
+          data-src={`${basePath}/${data.image}`}
           alt={`大港開唱藝人名單 ${data.title}`}
           class="u-object-fit --abs js-lazy"
         />
@@ -66,7 +66,7 @@ const { data, size = '', direction = '' } = Astro.props;
         style="--ratio: 3/2"
       >
         <img
-          data-src={`${SITE_BASE_PATH}/${data.image}`}
+          data-src={`${basePath}/${data.image}`}
           alt={`大港開唱藝人名單 ${data.title}`}
           class="u-object-fit --abs js-lazy"
         />
