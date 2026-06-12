@@ -24,8 +24,8 @@ export async function getStaticPaths() {
       }
 
       return {
-        // params 設定路徑，將檔名的 [slug] 帶入 md 的檔名作為路徑
-        params: { slug: category.id },
+        // params 設定路徑，將檔名的 [path].astro 帶入 md 的檔名作為路徑
+        params: { path: category.id },
         props: { currentCategory: category.data, list },
       };
     });

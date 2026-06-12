@@ -8,8 +8,8 @@ export async function getStaticPaths() {
   const entries = await getCollection('news');
 
   return entries.map((entry) => ({
-    // params 設定路徑，將檔名的 [slug] 帶入 md 的檔名作為路徑
-    params: { slug: entry.id },
+    // params 設定路徑，將檔名的 [path].astro 帶入 md 的檔名作為路徑
+    params: { path: entry.id },
     props: { entry },
   }));
 }
