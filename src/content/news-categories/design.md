@@ -1,6 +1,5 @@
 ---
-order: 1
-path: 'latest'
-title: '熱門消息'
+order: 2
+title: '設計快訊'
 description: '全部全部全部全部全部全部全部'
 ---

@@ -15,8 +15,8 @@ const newsCategories = (await getCollection('newsCategories')).sort(
   <!-- li -->
   <!--   a(href=`${basePath}/news/category/design.html`) 設計快訊 -->
   {
-    newsCategories.map(({ data }) => {
-      const path = data.path ? `/category/${data.path}` : '';
+    newsCategories.map(({ id, data }) => {
+      const path = id === 'all' ? '' : `/category/${id}`;
 
       return (
         <li>

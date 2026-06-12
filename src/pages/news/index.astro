@@ -1,13 +1,13 @@
 ---
 import NewsList from '@/components/NewsList.astro';
-import NewsLayout from '@/layouts/NewsLayout.astro';
+import NewsRoot from '@/layouts/NewsRoot.astro';
 import { getCollection } from 'astro:content';
 
 const list = (await getCollection('news')).sort((a, b) =>
   b.data.publishDate.localeCompare(a.data.publishDate),
 );
 const currentCategory = (await getCollection('newsCategories')).find(
-  ({ data }) => data.path === '',
+  ({ id }) => id === 'all',
 );
 
 if (!currentCategory) {
@@ -15,6 +15,6 @@ if (!currentCategory) {
 }
 ---
 
-<NewsLayout currentCategory={currentCategory.data}>
+<NewsRoot currentCategory={currentCategory.data}>
   <NewsList list={list} />
-</NewsLayout>
+</NewsRoot>

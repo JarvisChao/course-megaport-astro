@@ -1,6 +1,6 @@
 ---
 import NewsList from '@/components/NewsList.astro';
-import NewsLayout from '@/layouts/NewsLayout.astro';
+import NewsRoot from '@/layouts/NewsRoot.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -12,20 +12,20 @@ export async function getStaticPaths() {
   );
 
   return newsCategories
-    .filter(({ data }) => data.path)
+    .filter(({ id }) => id !== 'all')
     .map((category) => {
       let list = entries.filter(
-        (entry) => entry.data.category === category.data.path,
+        (entry) => entry.data.category === category.id,
       );
 
-      if (category.data.path === 'latest') list = entries.slice(0, 4);
-      if (category.data.path === 'others') {
+      if (category.id === 'latest') list = entries.slice(0, 4);
+      if (category.id === 'others') {
         // 篩出沒有設定分類的
         list = entries.filter((entry) => !entry.data.category);
       }
 
       return {
-        params: { category: category.data.path },
+        params: { category: category.id },
         props: { currentCategory: category.data, list },
       };
     });
@@ -34,6 +34,6 @@ export async function getStaticPaths() {
 const { currentCategory, list } = Astro.props;
 ---
 
-<NewsLayout currentCategory={currentCategory}>
+<NewsRoot currentCategory={currentCategory}>
   <NewsList list={list} />
-</NewsLayout>
+</NewsRoot>
