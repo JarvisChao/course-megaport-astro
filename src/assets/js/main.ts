@@ -36,13 +36,18 @@ AOS.init({
 
 //-- Btn Tag
 // 抓取檔名
-const pathname = location.pathname;
+const normalizePath = (path: string) => {
+  if (path === '/') return path;
+
+  return path.replace(/\/$/, '');
+};
+const pathname = normalizePath(location.pathname);
 document.querySelectorAll('a').forEach((item) => {
   const href = item.getAttribute('href');
   if (!href || href.startsWith('#') || href === '##') return;
   if (item.origin !== location.origin) return;
 
-  if (!item.hash && pathname === item.pathname) {
+  if (!item.hash && pathname === normalizePath(item.pathname)) {
     item.classList.add('is-active');
   }
 });
