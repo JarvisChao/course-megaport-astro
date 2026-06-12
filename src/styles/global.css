@@ -12,6 +12,17 @@
   即使沒有被 utility 使用
 */
 @theme static {
+  /* Breakpoint */
+  /* 清除所有預設樣式 */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-ipad: 1024px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+  --breakpoint-3xl: 1600px;
+
   /* Spacing */
   --spacing-40: var(--u-spacing-40);
   --spacing-36: var(--u-spacing-36);
@@ -48,6 +59,7 @@
   --font-weight-300: 300;
 
   /* Text */
+  /* 清除所有預設樣式 */
   --text-*: initial;
   --text-5xl: var(--u-text-5xl);
   --text-4xl: var(--u-text-4xl);

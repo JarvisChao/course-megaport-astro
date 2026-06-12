@@ -34,16 +34,15 @@
 // 使用 aspect-ratio 作法
 // 將 img 父層加上 `u-img-ratio` 即可
 // aspect-ratio 寫法與 padding 寫法差在瀏覽器支援度
-.u-img-ratio {
-  --ratio: 4/3;
-  aspect-ratio: var(--ratio);
-}
+// .u-img-ratio {
+//   --ratio: 4/3;
+//   aspect-ratio: var(--ratio);
+// }
 
 [data-parallax-offset] {
   overflow: hidden;
 }
 
-// 如同 background-image（用 img 搭配 object-fit 有助於 SEO 搜尋）
 .u-object-fit {
   --object-fit: cover;
   --object-position-x: center;

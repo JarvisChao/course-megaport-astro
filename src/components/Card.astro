@@ -15,10 +15,10 @@ const href = `${basePath}/news/${entry.id}`;
 <article class="c-card">
   <span class="c-card__date">{data.publishDate}</span>
   <div class="c-card__wrap">
-    <a href={href} class="u-img-ratio" style="--ratio: 1/1">
+    <a href={href} class="relative block aspect-1/1">
       <!-- 因為 aspect-ratio 會因為圖片寬高而不符合設定的比例 -->
       <!-- 所以圖片要加上 --abs 絕對定位，讓他跳脫自己的佔位，去符合父層 aspect-ratio -->
-      <!-- 等於是 u-img-ratio 當容器，讓 img 去撐滿 -->
+      <!-- 等於是 aspect-1/1 當容器，讓 img 去撐滿 -->
       <img
         src={`${basePath}/${data.image}`}
         alt={data.title}

@@ -28,8 +28,8 @@ const basePath = import.meta.env.BASE_URL;
         </div>
       </div>
       <div class="col-md-4 order-md-0 order-1">
-        <div class="l-about__content-wrap">
-          <div class="l-about__content mb-16" data-aos="fade-up">
+        <div class="pt-6 sm:pt-10 pb-20 max-md:pl-[5vw]">
+          <div class="md:-ml-40 mb-16" data-aos="fade-up">
             <h3 class="text-2xl font-900 mb-4">
               2022 年即將邁入第十三屆的《大港開唱》
             </h3>
@@ -37,7 +37,7 @@ const basePath = import.meta.env.BASE_URL;
               每年三月於高雄舉辦的大型音樂祭典，受到全台灣及日本香港年輕觀眾的喜愛，近年已成為台灣最具指標性的大型戶外音樂祭活動。
             </p>
           </div>
-          <div class="l-about__content" data-aos="fade-up">
+          <div data-aos="fade-up">
             <h3 class="text-2xl font-900 mb-4">「人生」與「音樂」</h3>
             <p class="font-500 line-clamp-3">
               大港舉辦在高雄港邊，獨特的海港地景和人文風情，常勾起人生中各種酸甜苦辣的回憶。也因如此，大港總是邀請有著豐富人生歷程的知名藝人及業界前輩演出，也會與新一代的樂團或藝人一起合作演出，交融出世代之間的化學效應，往往成為當年度為人津津樂道的經典現場
@@ -101,26 +101,6 @@ const basePath = import.meta.env.BASE_URL;
 
       @include media(max-md) {
         height: 60vw;
-      }
-    }
-
-    &__content-wrap {
-      padding: var(--spacing-10) 0 var(--spacing-20);
-
-      @include media(max-md) {
-        padding-left: 5vw;
-      }
-
-      @include media(max-sm) {
-        padding-top: var(--spacing-6);
-      }
-    }
-
-    &__content:first-child {
-      margin-left: rem(-160);
-
-      @include media(max-md) {
-        margin-left: 0;
       }
     }
   }
