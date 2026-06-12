@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 const scssPath = resolve('src/assets/scss');
 const srcPath = resolve('src');
 const siteBaseUrl = 'https://jarvischao.github.io';
-const siteBasePath = '/course-megaport';
+const siteBasePath = '/course-megaport-astro';
 
 export default defineConfig({
   site: siteBaseUrl,

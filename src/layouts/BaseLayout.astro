@@ -5,7 +5,7 @@ import {
   SITE_DESCRIPTION,
   SITE_IMAGE,
   SITE_INFO_TITLE,
-  SITE_TITLE,
+  SITE_NAME,
 } from '@/consts';
 import '@fontsource/noto-sans-tc/400.css';
 import '@fontsource/noto-sans-tc/500.css';
@@ -32,12 +32,22 @@ const {
   image = SITE_IMAGE,
 } = Astro.props;
 
-const title = `${pageTitle ? `${pageTitle} - ` : ''}${SITE_TITLE}${infoTitle ? `｜${infoTitle}` : ''}`;
-const basePath = import.meta.env.BASE_URL;
+// 設定標題格式
+// <Page Title> - <Site Name>｜<Info Title>
+let title = SITE_NAME;
+if (pageTitle) {
+  title = `${pageTitle} - ${SITE_NAME}`;
+}
+if (infoTitle) {
+  title = `${title}｜${infoTitle}`;
+}
 
+const basePath = import.meta.env.BASE_URL;
+// origin 沒有結尾斜線
 const siteUrl = Astro.site?.origin;
-const normalizedImage = image.replace(/^\//, '');
 const pageUrl = Astro.url.href;
+
+const normalizedImage = image.replace(/^\//, '');
 const imageUrl = `${siteUrl}${basePath}/${normalizedImage}`;
 const bodyBgImage = `url('${basePath}/img/bg-dots.png')`;
 ---
@@ -70,7 +80,6 @@ const bodyBgImage = `url('${basePath}/img/bg-dots.png')`;
     <meta name="description" content={description} />
 
     <meta property="og:title" content={title} />
-    <!-- <Page Title> - <Site Name>｜<Info Title> -->
     <title>{title}</title>
 
     <!-- 網頁 icon -->

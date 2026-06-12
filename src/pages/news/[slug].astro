@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { SITE_TITLE } from '@/consts';
+import { SITE_NAME } from '@/consts';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -15,26 +15,22 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const slug = Astro.params.slug ?? entry.id;
 const basePath = import.meta.env.BASE_URL;
-if (!Astro.site) {
-  throw new Error('Missing site in astro.config.mjs.');
-}
-
-const siteUrl = Astro.site.origin;
-const url = Astro.url.href;
+// origin 沒有結尾斜線
+const siteUrl = Astro.site?.origin;
+const pageUrl = Astro.url.href;
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'NewsArticle',
-  url,
+  pageUrl,
   publisher: {
     '@type': 'Organization',
-    name: SITE_TITLE,
+    name: SITE_NAME,
     logo: `${siteUrl}${basePath}/img/logo/logo.svg`,
   },
   headline: entry.data.title,
-  mainEntityOfPage: url,
+  mainEntityOfPage: pageUrl,
   articleBody: entry.data.description,
   image: `${siteUrl}${basePath}/${entry.data.image}`,
   datePublished: entry.data.publishDate,
