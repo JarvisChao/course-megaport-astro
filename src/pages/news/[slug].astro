@@ -3,16 +3,19 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { SITE_NAME } from '@/consts';
 import { getCollection, render } from 'astro:content';
 
+// getStaticPaths 用來定義 router
 export async function getStaticPaths() {
   const entries = await getCollection('news');
 
   return entries.map((entry) => ({
+    // params 設定路徑，將檔名的 [slug] 帶入 md 的檔名作為路徑
     params: { slug: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
+const data = entry.data;
 const { Content } = await render(entry);
 
 const basePath = import.meta.env.BASE_URL;
@@ -29,19 +32,15 @@ const jsonLd = {
     name: SITE_NAME,
     logo: `${siteUrl}${basePath}/img/logo/logo.svg`,
   },
-  headline: entry.data.title,
+  headline: data.title,
   mainEntityOfPage: pageUrl,
-  articleBody: entry.data.description,
-  image: `${siteUrl}${basePath}/${entry.data.image}`,
-  datePublished: entry.data.publishDate,
+  articleBody: data.description,
+  image: `${siteUrl}${basePath}/${data.image}`,
+  datePublished: data.publishDate,
 };
 ---
 
-<BaseLayout
-  pageTitle={entry.data.title}
-  infoTitle=""
-  description={entry.data.description}
->
+<BaseLayout pageTitle={data.title} infoTitle="" description={data.description}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
@@ -49,15 +48,15 @@ const jsonLd = {
     <section class="l-news-detail">
       <div class="container-xs">
         <div class="l-news-detail__title-wrap">
-          <h1 class="text-2xl font-900">{entry.data.title}</h1>
+          <h1 class="text-2xl font-900">{data.title}</h1>
           <span class="o-text-lg">
-            {entry.data.publishDate}
+            {data.publishDate}
           </span>
         </div>
       </div>
       <div class="container-2xs">
         <div class="l-news-detail__content">
-          <img src={`${basePath}/${entry.data.image}`} alt={entry.data.title} />
+          <img src={`${basePath}/${data.image}`} alt={data.title} />
           <div class="u-editor">
             <!-- 遇到後台編輯器，還原 reset 設定值 -->
             <Content />

@@ -3,6 +3,7 @@ import NewsList from '@/components/NewsList.astro';
 import NewsRoot from '@/layouts/NewsRoot.astro';
 import { getCollection } from 'astro:content';
 
+// getStaticPaths 用來定義 router
 export async function getStaticPaths() {
   const entries = (await getCollection('news')).sort((a, b) =>
     b.data.publishDate.localeCompare(a.data.publishDate),
@@ -14,9 +15,7 @@ export async function getStaticPaths() {
   return newsCategories
     .filter(({ id }) => id !== 'all')
     .map((category) => {
-      let list = entries.filter(
-        (entry) => entry.data.category === category.id,
-      );
+      let list = entries.filter((entry) => entry.data.category === category.id);
 
       if (category.id === 'latest') list = entries.slice(0, 4);
       if (category.id === 'others') {
@@ -25,7 +24,8 @@ export async function getStaticPaths() {
       }
 
       return {
-        params: { category: category.id },
+        // params 設定路徑，將檔名的 [slug] 帶入 md 的檔名作為路徑
+        params: { slug: category.id },
         props: { currentCategory: category.data, list },
       };
     });
