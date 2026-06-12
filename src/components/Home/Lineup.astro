@@ -4,8 +4,8 @@ import Blockade from '@/components/Blockade.astro';
 import SectionTitle from '@/components/Home/SectionTitle.astro';
 import { getCollection } from 'astro:content';
 
-const artistList = (await getCollection('artists')).sort((a, b) =>
-  a.id.localeCompare(b.id),
+const artistList = (await getCollection('artists')).sort(
+  (a, b) => a.data.order - b.data.order,
 );
 ---
 

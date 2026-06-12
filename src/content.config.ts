@@ -25,6 +25,7 @@ const news = defineCollection({
 const artists = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/artists' }),
   schema: z.object({
+    order: z.number(),
     title: z.string(),
     image: z.string(),
   }),
