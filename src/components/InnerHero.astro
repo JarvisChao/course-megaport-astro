@@ -28,7 +28,6 @@ const heroBgImage = `${basePath}/img/footer/bg.jpg`;
     align-items: center;
     height: 40vh;
     overflow: hidden;
-
     &::after {
       content: '';
       display: block;
@@ -40,19 +39,15 @@ const heroBgImage = `${basePath}/img/footer/bg.jpg`;
       mix-blend-mode: multiply;
     }
   }
-
   :global(.c-blockade.l-hero-inner__blockade) {
     top: auto;
     bottom: -30%;
-
     @include media(max-2xl) {
       bottom: -20%;
     }
-
     @include media(max-ipad-portrait) {
       bottom: 10%;
     }
-
     @include media(max-sm) {
       bottom: -20%;
     }

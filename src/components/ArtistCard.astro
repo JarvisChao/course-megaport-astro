@@ -78,50 +78,42 @@ const basePath = import.meta.env.BASE_URL;
     width: 100%;
     max-width: rem(450);
     pointer-events: auto;
-
     &.--size-lg {
       max-width: rem(560);
     }
-
     &__wrap {
       display: flex;
       flex-direction: column;
       row-gap: var(--spacing-2);
       filter: grayscale(100%);
       transition: filter 0.3s;
-
       &:hover {
         filter: grayscale(0%);
       }
     }
-
     &.--reverse &__wrap {
       flex-direction: column-reverse;
     }
-
     &__glitch-mask {
       position: absolute;
-      width: 100%;
-      left: 0;
       top: 0;
+      left: 0;
+      width: 100%;
       mix-blend-mode: lighten;
-
       &::after {
         content: '';
         display: block;
         position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        left: 0;
-        top: 0;
         mix-blend-mode: multiply;
         z-index: 10;
       }
-
       &.--primary::after {
         background-color: var(--color-primary);
       }
-
       &.--secondary::after {
         background-color: var(--color-secondary);
       }

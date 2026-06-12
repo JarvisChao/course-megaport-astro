@@ -17,7 +17,7 @@ const artistList = (await getCollection('artists')).sort(
         <SectionTitle title="LINEUP" />
       </div>
       <div
-        class="row --gap l-lineup__box js-parallax"
+        class="row --gap pointer-events-none js-parallax"
         data-input-element=".l-lineup"
       >
         <!-- input-element 滑鼠進入指定區塊內才生效 -->
@@ -52,34 +52,27 @@ const artistList = (await getCollection('artists')).sort(
       height: rem(200);
       pointer-events: none;
     }
-
     :global(.c-blockade.l-lineup__blockade) {
       top: -10%;
-
       @include media(max-xl) {
         top: -20%;
       }
     }
-
     &__sticky {
       position: sticky;
       top: var(--spacing-30);
     }
-
     &__box {
       pointer-events: auto;
     }
-
     &__wrap {
       display: flex !important;
       position: relative !important;
-
       &:first-child {
         justify-content: flex-end;
         align-items: flex-end;
         z-index: 1;
       }
-
       &:nth-child(4) {
         justify-content: center;
       }

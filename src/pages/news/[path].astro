@@ -49,13 +49,13 @@ const jsonLd = {
       <div class="container-xs">
         <div class="l-news-detail__title-wrap">
           <h1 class="text-2xl font-900">{data.title}</h1>
-          <span class="o-text-lg">
+          <span class="text-lg font-900 tracking-tighter">
             {data.publishDate}
           </span>
         </div>
       </div>
       <div class="container-2xs">
-        <div class="l-news-detail__content">
+        <div class="pt-10">
           <img src={`${basePath}/${data.image}`} alt={data.title} />
           <div class="u-editor">
             <!-- 遇到後台編輯器，還原 reset 設定值 -->
@@ -73,7 +73,6 @@ const jsonLd = {
     font-weight: 900;
     letter-spacing: var(--tracking-tighter);
   }
-
   .l-news-detail {
     &__title-wrap {
       display: flex;
@@ -82,7 +81,6 @@ const jsonLd = {
       padding-bottom: var(--spacing-2);
       border-bottom: 2px solid var(--color-gray-light);
     }
-
     &__content {
       padding: var(--spacing-10) var(--spacing-2) 0;
     }

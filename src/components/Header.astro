@@ -149,30 +149,26 @@ const basePath = import.meta.env.BASE_URL;
 
 <style lang="scss">
   .l-header {
-    position: sticky;
-    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
     width: 100%;
     padding-left: 4vw;
     background-color: var(--color-black);
     border-bottom: 1px solid var(--color-primary);
     box-shadow: 0 var(--spacing-1) var(--spacing-14) var(--color-primary);
     z-index: 9999;
-
     @include media(max-2xl) {
       padding: var(--spacing-4) 4vw;
     }
-
     &__logo-mask {
       max-width: rem(200);
     }
   }
-
   .c-nav {
     z-index: 99;
-
     @include media(max-2xl) {
       position: fixed;
       inset: 0;
@@ -183,18 +179,15 @@ const basePath = import.meta.env.BASE_URL;
       pointer-events: none;
       overflow: auto;
       transition: opacity 0.3s;
-
       &.is-opened {
         opacity: 1;
         pointer-events: auto;
       }
     }
-
     &__menu {
       display: flex;
       color: var(--color-gray-mid);
       letter-spacing: var(--tracking-tight);
-
       @include media(max-2xl) {
         flex-direction: column;
         justify-content: center;
@@ -203,10 +196,8 @@ const basePath = import.meta.env.BASE_URL;
         padding: var(--spacing-16) 0;
       }
     }
-
     &__btn-box {
       display: flex;
-
       @include media(max-md) {
         &:not(.--links) {
           flex-direction: column;
@@ -215,30 +206,25 @@ const basePath = import.meta.env.BASE_URL;
         }
       }
     }
-
     &__btn-box.--links {
       @include media(max-2xl) {
         margin-top: var(--spacing-4);
       }
     }
-
     &__btn-wrap {
       height: 100%;
       color: var(--color-gradient);
     }
-
     @include media(max-2xl) {
       &__btn-wrap:first-child &__btn::after {
         display: none;
       }
     }
-
     &__btn {
       --color-gradient: var(--color-primary);
       height: 100%;
       padding: var(--spacing-6) 2.8vw;
       transition: color 0.3s;
-
       &::before,
       &::after {
         content: '';
@@ -253,76 +239,62 @@ const basePath = import.meta.env.BASE_URL;
           transparent
         );
       }
-
       &::before {
         width: 100%;
         opacity: 0;
         transition: opacity 0.3s;
       }
-
       &::after {
         --color-gradient: var(--color-gray-light);
         width: 1px;
-
         @include media(max-md) {
           display: none;
         }
       }
-
       &:hover,
       &.is-active {
         color: var(--color-gray-light);
-
         &::before {
           opacity: 1;
         }
       }
     }
-
     &__btn-box.--links &__btn {
       --color-gradient: var(--color-secondary);
       display: flex;
       align-items: center;
-      padding-left: 1.2vw;
       padding-right: 1.2vw;
+      padding-left: 1.2vw;
       background-color: var(--color-gray-mid-40);
-
       &::after {
         --color-gradient: var(--color-secondary);
       }
-
       @include media(max-2xl) {
         background-color: transparent;
-
         &::after {
           display: none;
         }
       }
     }
   }
-
   .o-burger {
     --size: #{rem(42)};
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+    z-index: 999;
     width: var(--size);
     height: var(--size);
     cursor: pointer;
-    z-index: 999;
-
     @include media(max-2xl) {
       display: flex;
     }
-
     @include media(max-sm) {
       --size: #{rem(38)};
     }
-
     &.is-opened &__line {
       --line-offset: calc(var(--gap) + var(--height));
-
       &:nth-child(1) {
         // 不能先旋轉在位移，因為會先改變軸心才位移，位置會不對
         // transform: rotate(45deg) translateY(var(--gap));
@@ -330,17 +302,14 @@ const basePath = import.meta.env.BASE_URL;
         // transform: translateY(calc(var(--gap) + var(--height))) rotate(45deg);
         transform: translateY(var(--line-offset)) rotate(45deg);
       }
-
       &:nth-child(2) {
         width: 0;
       }
-
       &:nth-child(3) {
         // transform: rotate(-45deg) translateY(calc(-1 * var(--gap)));
         transform: translateY(calc(-1 * var(--line-offset))) rotate(-45deg);
       }
     }
-
     &__line {
       --gap: #{rem(8)};
       --height: 2px;
@@ -350,21 +319,17 @@ const basePath = import.meta.env.BASE_URL;
       transition:
         width 0.5s,
         transform 0.5s;
-
       &:not(:first-child) {
         margin-top: var(--gap);
       }
     }
-
     &:hover:not(.is-opened) &__line {
       &:first-child {
         width: 90%;
       }
-
       &:nth-child(2) {
         width: 70%;
       }
-
       &:last-child {
         width: 90%;
       }
