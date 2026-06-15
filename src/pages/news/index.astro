@@ -1,6 +1,6 @@
 ---
 import NewsList from '@/components/NewsList.astro';
-import NewsRoot from '@/layouts/NewsRoot.astro';
+import NewsLayout from '@/layouts/NewsLayout.astro';
 import { getCollection } from 'astro:content';
 
 const list = (await getCollection('news')).sort((a, b) =>
@@ -15,6 +15,6 @@ if (!currentCategory) {
 }
 ---
 
-<NewsRoot currentCategory={currentCategory.data}>
+<NewsLayout currentCategory={currentCategory.data}>
   <NewsList list={list} />
-</NewsRoot>
+</NewsLayout>

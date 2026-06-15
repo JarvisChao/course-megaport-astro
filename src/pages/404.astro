@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import Layout from '@/layouts/Layout.astro';
 import InnerHero from '@/components/InnerHero.astro';
 ---
 
-<BaseLayout pageTitle="404 ERROR">
+<Layout pageTitle="404 ERROR">
   <InnerHero title="404 ERROR" blockade blockadeText="404 ERROR 找不到頁面" />
   <main class="l-main">
     <section class="l-error">
@@ -14,4 +14,4 @@ import InnerHero from '@/components/InnerHero.astro';
       </div>
     </section>
   </main>
-</BaseLayout>
+</Layout>

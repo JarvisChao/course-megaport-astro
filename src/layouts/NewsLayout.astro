@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import Layout from '@/layouts/Layout.astro';
 import InnerHero from '@/components/InnerHero.astro';
 import NewsCategory from '@/components/NewsCategory.astro';
 import type { CollectionEntry } from 'astro:content';
@@ -11,7 +11,7 @@ interface Props {
 const { currentCategory } = Astro.props;
 ---
 
-<BaseLayout
+<Layout
   pageTitle={currentCategory.title}
   description={currentCategory.description || undefined}
 >
@@ -24,4 +24,4 @@ const { currentCategory } = Astro.props;
       </div>
     </section>
   </main>
-</BaseLayout>
+</Layout>

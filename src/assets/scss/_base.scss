@@ -41,10 +41,6 @@
     letter-spacing: var(--tracking-normal);
     color: var(--color-gray-light);
     transition: background-color 0.8s;
-    &.is-news-active {
-      background-image: none;
-      background-color: var(--color-primary);
-    }
   }
 
   /* ----------------------------------- */

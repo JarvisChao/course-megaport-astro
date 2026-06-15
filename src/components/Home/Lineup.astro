@@ -45,6 +45,11 @@ const artistList = (await getCollection('artists')).sort(
 </section>
 
 <style lang="scss">
+  body.is-news-active {
+    background-image: none;
+    background-color: var(--color-primary);
+  }
+
   .l-lineup {
     &::after {
       content: '';

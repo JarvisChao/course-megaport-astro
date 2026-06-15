@@ -1,5 +1,5 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import Layout from '@/layouts/Layout.astro';
 import { SITE_NAME } from '@/consts';
 import { getCollection, render } from 'astro:content';
 
@@ -40,7 +40,7 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout pageTitle={data.title} infoTitle="" description={data.description}>
+<Layout pageTitle={data.title} infoTitle="" description={data.description}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
@@ -65,7 +65,7 @@ const jsonLd = {
       </div>
     </section>
   </main>
-</BaseLayout>
+</Layout>
 
 <style lang="scss">
   .o-text-lg {

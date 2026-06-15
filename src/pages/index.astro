@@ -1,16 +1,16 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
+import Layout from '@/layouts/Layout.astro';
 import HomeAbout from '@/components/Home/About.astro';
 import HomeHero from '@/components/Home/Hero.astro';
 import HomeLineup from '@/components/Home/Lineup.astro';
 import HomeNews from '@/components/Home/News.astro';
 ---
 
-<BaseLayout>
+<Layout>
   <main class="l-main">
     <HomeHero />
     <HomeLineup />
     <HomeNews />
     <HomeAbout />
   </main>
-</BaseLayout>
+</Layout>
