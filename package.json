@@ -1,8 +1,11 @@
 {
   "name": "course-megaport-astro",
   "private": true,
-  "packageManager": "pnpm@10.13.1",
   "type": "module",
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": "22.13.1"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
