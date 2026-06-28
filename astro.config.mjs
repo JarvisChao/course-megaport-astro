@@ -4,26 +4,21 @@ import { resolve } from 'node:path';
 
 import sitemap from '@astrojs/sitemap';
 
-const scssPath = resolve('src/assets/scss');
-const srcPath = resolve('src');
-const siteBaseUrl = 'https://jarvischao.github.io';
-const siteBasePath = '/course-megaport-astro';
-
 export default defineConfig({
-  site: siteBaseUrl,
-  base: siteBasePath,
+  site: 'https://jarvischao.github.io',
+  base: '/course-megaport-astro',
 
   vite: {
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@': srcPath,
+        '@': resolve('src'),
       },
     },
     css: {
       preprocessorOptions: {
         scss: {
-          loadPaths: [scssPath],
+          loadPaths: [resolve('src/assets/scss')],
           additionalData: `
             @use "functions" as *;
             @use "mixins" as *;
