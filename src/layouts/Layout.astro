@@ -13,8 +13,14 @@ import '@fontsource/noto-sans-tc/900.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/900.css';
 import 'lenis/dist/lenis.css';
+
 // 引入連結
 // css 引入也有順序，通常插件在自定義的 style 上面
+// 這裡順序的原因是：
+// 1. SCSS 裡會用到 Tailwind theme 產生的 CSS variables
+// 2. global.css 有 @layer theme, bootstrap, base, utilities;
+//    這代表 layer 順序在 global.css 先宣告好，
+//    後面 style.scss 裡的 base layer 才會被放進正確的位置
 import '@/styles/global.css';
 import '@/assets/scss/style.scss';
 
