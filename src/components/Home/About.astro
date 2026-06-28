@@ -1,11 +1,11 @@
 ---
+import SectionTitle from '@/components/SectionTitle.astro';
 import Btn from '@/components/Btn.astro';
-import SectionTitle from '@/components/Home/SectionTitle.astro';
 
 const basePath = import.meta.env.BASE_URL;
 ---
 
-<section id="about" class="--gradient l-about">
+<section id="home-about" class="--gradient l-home-about">
   <div class="container">
     <div class="mb-20" data-aos="fade-right">
       <SectionTitle title="ABOUT" />
@@ -14,8 +14,8 @@ const basePath = import.meta.env.BASE_URL;
   <div class="container-sm --align-left">
     <div class="row">
       <div class="col-md-8 order-md-0 order-2" data-aos="fade-right">
-        <div class="l-about__img-wrap">
-          <div class="l-about__img-mask" data-parallax-offset="-200">
+        <div class="l-home-about__img-wrap">
+          <div class="l-home-about__img-mask" data-parallax-offset="-200">
             <!-- data-parallax-offset 自訂義的 gsap 圖片視差，值為位移 px -->
             <!-- abs 是因為父層沒有固定高度，會導致吃原圖高度而跑版 -->
             <!-- 要讓圖片跟著父層吃 col 的 stretch 就要加上 abs -->
@@ -58,7 +58,7 @@ const basePath = import.meta.env.BASE_URL;
 </section>
 
 <style lang="scss">
-  .l-about {
+  .l-home-about {
     &::before {
       content: '';
       display: block;

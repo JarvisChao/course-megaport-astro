@@ -1,6 +1,6 @@
 ---
-import Card from '@/components/Card.astro';
-import SectionTitle from '@/components/Home/SectionTitle.astro';
+import SectionTitle from '@/components/SectionTitle.astro';
+import Card from '@/components/News/Card.astro';
 import { getCollection } from 'astro:content';
 
 const newsList = (await getCollection('news')).sort((a, b) =>

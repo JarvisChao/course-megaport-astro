@@ -1,0 +1,34 @@
+---
+import Burger from './Burger.astro';
+import Nav from './Nav.astro';
+
+const basePath = import.meta.env.BASE_URL;
+---
+
+<header class="l-header">
+  <a href={basePath} class="max-w-50">
+    <img src={`${basePath}/img/logo/logo.svg`} alt="大港開唱 Logo" />
+  </a>
+
+  <Burger />
+  <Nav />
+</header>
+
+<style lang="scss">
+  .l-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding-left: 4vw;
+    background-color: var(--color-black);
+    border-bottom: 1px solid var(--color-primary);
+    box-shadow: 0 var(--spacing-1) var(--spacing-14) var(--color-primary);
+    z-index: 9999;
+    @include media(max-2xl) {
+      padding: var(--spacing-4) 4vw;
+    }
+  }
+</style>

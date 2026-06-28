@@ -1,0 +1,67 @@
+<!-- input(type="checkbox" id="burger-switcher" hidden) --><!-- label(for="burger-switcher" class="o-burger") -->
+<button class="o-burger" aria-label="漢堡選單">
+  <div class="o-burger__line"></div>
+  <div class="o-burger__line"></div>
+  <div class="o-burger__line"></div>
+</button>
+
+<style lang="scss">
+  .o-burger {
+    --size: #{rem(42)};
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 999;
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+    @include media(max-2xl) {
+      display: flex;
+    }
+    @include media(max-sm) {
+      --size: #{rem(38)};
+    }
+    &.is-opened &__line {
+      --line-offset: calc(var(--gap) + var(--height));
+      &:nth-child(1) {
+        // 不能先旋轉在位移，因為會先改變軸心才位移，位置會不對
+        // transform: rotate(45deg) translateY(var(--gap));
+        // 先放到我要的位置，再旋轉
+        // transform: translateY(calc(var(--gap) + var(--height))) rotate(45deg);
+        transform: translateY(var(--line-offset)) rotate(45deg);
+      }
+      &:nth-child(2) {
+        width: 0;
+      }
+      &:nth-child(3) {
+        // transform: rotate(-45deg) translateY(calc(-1 * var(--gap)));
+        transform: translateY(calc(-1 * var(--line-offset))) rotate(-45deg);
+      }
+    }
+    &__line {
+      --gap: #{rem(8)};
+      --height: 2px;
+      width: 80%;
+      height: var(--height);
+      background-color: var(--color-gray-light);
+      transition:
+        width 0.5s,
+        transform 0.5s;
+      &:not(:first-child) {
+        margin-top: var(--gap);
+      }
+    }
+    &:hover:not(.is-opened) &__line {
+      &:first-child {
+        width: 90%;
+      }
+      &:nth-child(2) {
+        width: 70%;
+      }
+      &:last-child {
+        width: 90%;
+      }
+    }
+  }
+</style>

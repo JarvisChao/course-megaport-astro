@@ -12,9 +12,9 @@ const basePath = import.meta.env.BASE_URL;
 const heroBgImage = `${basePath}/img/footer/bg.jpg`;
 ---
 
-<div class="l-hero-inner" data-aos="fade-down">
+<div class="c-inner-hero" data-aos="fade-down">
   <img src={heroBgImage} alt="" class="u-object-fit --abs" aria-hidden="true" />
-  {blockade && <Blockade text={blockadeText} class="l-hero-inner__blockade" />}
+  {blockade && <Blockade text={blockadeText} class="c-inner-hero__blockade" />}
   <div class="z-1">
     {title && <h2 class="text-3xl font-900 text-primary">{title}</h2>}
     <slot />
@@ -22,7 +22,7 @@ const heroBgImage = `${basePath}/img/footer/bg.jpg`;
 </div>
 
 <style lang="scss">
-  .l-hero-inner {
+  .c-inner-hero {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +39,7 @@ const heroBgImage = `${basePath}/img/footer/bg.jpg`;
       mix-blend-mode: multiply;
     }
   }
-  :global(.c-blockade.l-hero-inner__blockade) {
+  :global(.c-blockade.c-inner-hero__blockade) {
     top: auto;
     bottom: -30%;
     @include media(max-2xl) {

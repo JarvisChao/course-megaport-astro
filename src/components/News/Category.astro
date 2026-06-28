@@ -7,7 +7,7 @@ const newsCategories = (await getCollection('newsCategories')).sort(
 );
 ---
 
-<ul class="flex flex-wrap mb-20" style="gap: 0 var(--spacing-6)">
+<ul class="c-news-category flex flex-wrap gap-x-6 mb-20">
   <!-- li -->
   <!--   a(href=`${basePath}/news/`) 全部 -->
   <!-- li -->
@@ -20,7 +20,7 @@ const newsCategories = (await getCollection('newsCategories')).sort(
 
       return (
         <li>
-          <a href={`${basePath}/news${path}`} class="l-news-list__btn">
+          <a href={`${basePath}/news${path}`} class="c-news-category__btn">
             {data.title}
           </a>
         </li>
@@ -30,7 +30,7 @@ const newsCategories = (await getCollection('newsCategories')).sort(
 </ul>
 
 <style lang="scss">
-  .l-news-list__btn {
+  .c-news-category__btn {
     font-size: var(--text-xl);
     font-weight: 900;
     color: var(--color-gray);
