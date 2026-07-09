@@ -15,10 +15,10 @@
   --container-3xs: calc(var(--html-spacing) * 880);
 
   // Section
-  --section-spacing-x: 4vw;
+  --section-spacing-x: 6vw;
   --section-spacing-y: var(--spacing-30);
   @include media(max-sm) {
-    --section-spacing-x: 1vw;
+    --section-spacing-x: 4vw;
   }
 
   // Spacing
@@ -42,6 +42,7 @@
   --u-spacing-4: #{rem(16)};
   --u-spacing-3: #{rem(12)};
   --u-spacing-2: #{rem(8)};
+  --u-spacing-1_5: #{rem(6)};
   --u-spacing-1: #{rem(4)};
   @include media(max-sm) {
     --u-spacing-40: 24vw;

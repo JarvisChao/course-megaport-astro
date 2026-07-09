@@ -1,9 +1,10 @@
 @layer theme, bootstrap, base, utilities;
 
-@import 'bootstrap/dist/css/bootstrap-grid.min.css' layer(bootstrap);
+/* @import 'bootstrap/dist/css/bootstrap-grid.min.css' layer(bootstrap); */
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
+/* Tailwind 預設會影響我們自定義的 container */
 @source not inline("container");
 
 /*
@@ -44,6 +45,7 @@
   --spacing-4: var(--u-spacing-4);
   --spacing-3: var(--u-spacing-3);
   --spacing-2: var(--u-spacing-2);
+  --spacing-1_5: var(--u-spacing-1_5);
   --spacing-1: var(--u-spacing-1);
 
   /* Font */

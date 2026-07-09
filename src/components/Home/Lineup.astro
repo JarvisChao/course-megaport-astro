@@ -17,28 +17,34 @@ const artistList = (await getCollection('artists')).sort(
         <SectionTitle title="LINEUP" />
       </div>
       <div
-        class="row --gap pointer-events-none js-parallax"
+        class="grid --gap grid-cols-1 sm:grid-cols-12 pointer-events-none js-parallax"
         data-input-element=".l-home-lineup"
       >
         <!-- input-element 滑鼠進入指定區塊內才生效 -->
-        <div class="col-sm-5 l-home-lineup__wrap" data-depth="0.1">
+        <div class="sm:col-span-5 l-home-lineup__wrap" data-depth="0.1">
           <LineupArtistCard data={artistList[0].data} />
         </div>
-        <div class="col-sm-7 l-home-lineup__wrap" data-depth="-0.1">
+        <div class="sm:col-span-7 l-home-lineup__wrap" data-depth="-0.1">
           <LineupArtistCard data={artistList[1].data} size="lg" />
         </div>
-        <div class="col-lg-4 col-sm-7 l-home-lineup__wrap" data-depth="-0.2">
+        <div
+          class="lg:col-span-4 sm:col-span-7 l-home-lineup__wrap"
+          data-depth="-0.2"
+        >
           <LineupArtistCard
             data={artistList[2].data}
             size="lg"
             direction="reverse"
           />
         </div>
-        <div class="col-lg-4 col-sm-5 l-home-lineup__wrap" data-depth="0.2">
+        <div
+          class="lg:col-span-4 sm:col-span-5 l-home-lineup__wrap"
+          data-depth="0.2"
+        >
           <LineupArtistCard data={artistList[3].data} direction="reverse" />
         </div>
         <div
-          class="col-lg-4 col-sm-5 offset-lg-0 offset-sm-4 l-home-lineup__wrap"
+          class="lg:col-span-4 sm:col-span-5 offset-lg-0 offset-sm-4 l-home-lineup__wrap"
           data-depth="-0.2"
         >
           <LineupArtistCard data={artistList[4].data} direction="reverse" />

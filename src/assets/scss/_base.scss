@@ -187,13 +187,16 @@
   }
 
   [class*='container'] {
-    // 這邊需要定義 Section 寬度，是因為 Section 不宜一定總是寬度 100%
-    --section-width: 100vw;
     max-width: var(--container-width);
     margin: 0 auto;
 
     // 靠左或右，並同時保有 container 最大寬特性
     &[class*='--align'] {
+      // 這邊需要定義 Section 寬度
+      // 因為有的 section 不是在 100vw 大小內
+      // 15px 為 scrollbar 寬度及一些計算誤差扣除
+      --section-width: calc(100vw - 15px);
+
       // 減回去 section padding 空間
       --edge-fill: calc(-1 * var(--section-spacing-x));
 
@@ -207,51 +210,44 @@
       //
       // section 一半 + container 最大寬的一半 - container 預設 padding
       max-width: calc(
-        var(--section-width) / 2 + var(--container-width) /
-          2 - var(--bs-gutter-x) * 0.5
+        var(--section-width) / 2 + var(--container-width) / 2
       ) !important;
-
-      // 避免靠右時，滾軸出現
-      > .row {
-        --bs-gutter-x: 0;
-      }
     }
+
     &.--align-left {
-      padding-left: 0;
       margin-left: var(--edge-fill);
     }
     &.--align-right {
-      padding-right: 0;
       margin-right: var(--edge-fill);
     }
   }
 
-  // Bootstrap row 自定義 gap
-  .row {
+  // Grid 自定義 gap
+  .grid {
     &.--no-gap {
-      --bs-gutter-x: 0;
-      --bs-gutter-y: 0;
+      column-gap: 0;
+      row-gap: 0;
     }
     &.--gap-md {
-      --bs-gutter-x: var(--spacing-8);
-      --bs-gutter-y: var(--spacing-8);
+      column-gap: var(--spacing-8);
+      row-gap: var(--spacing-8);
       @include media(max-sm) {
-        --bs-gutter-x: var(--spacing-4);
-        --bs-gutter-y: var(--spacing-6);
+        column-gap: var(--spacing-4);
+        row-gap: var(--spacing-6);
       }
     }
     &.--gap {
-      --bs-gutter-x: var(--spacing-6);
-      --bs-gutter-y: var(--spacing-6);
+      column-gap: var(--spacing-6);
+      row-gap: var(--spacing-6);
       @include media(max-sm) {
-        --bs-gutter-x: var(--spacing-3);
-        --bs-gutter-y: var(--spacing-4);
+        column-gap: var(--spacing-3);
+        row-gap: var(--spacing-4);
       }
     }
     &.--gap-y-md {
-      --bs-gutter-y: var(--spacing-8);
+      row-gap: var(--spacing-8);
       @include media(max-sm) {
-        --bs-gutter-y: var(--spacing-6);
+        row-gap: var(--spacing-6);
       }
     }
   }

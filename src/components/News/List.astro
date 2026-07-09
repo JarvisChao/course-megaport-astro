@@ -12,12 +12,6 @@ const { list } = Astro.props;
 // description = currentCate.description ? currentCate.description : undefined;
 ---
 
-<div class="row --gap-md">
-  {
-    list.map((item) => (
-      <div class="col-6 col-lg-4 col-xxl-3">
-        <Card entry={item} />
-      </div>
-    ))
-  }
+<div class="grid --gap-md grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+  {list.map((item) => <Card entry={item} />)}
 </div>
