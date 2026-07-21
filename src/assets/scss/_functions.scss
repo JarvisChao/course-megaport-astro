@@ -4,7 +4,7 @@
   @return calc(var(--html-spacing) * #{$pxValue});
 }
 
-// `calc(var(--html-spacing) * $pxNumber)` 編譯出來為 =>
+// `calc(var(--html-spacing) * $pxValue)` 編譯出來為 =>
 // `calc(var(--html-spacing) * 數值)` 使 CSS 辨識度佳
 
 // 使用方式 rem(400)

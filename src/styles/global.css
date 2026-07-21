@@ -1,3 +1,4 @@
+/* @layer 用來控制 css 權重，越後面越大 */
 @layer theme, bootstrap, base, utilities;
 
 /* @import 'bootstrap/dist/css/bootstrap-grid.min.css' layer(bootstrap); */
@@ -25,6 +26,9 @@
   --breakpoint-3xl: 1600px;
 
   /* Spacing */
+  --spacing-section-x: var(--section-spacing-x);
+  --spacing-section-y: var(--section-spacing-y);
+
   --spacing-40: var(--u-spacing-40);
   --spacing-36: var(--u-spacing-36);
   --spacing-32: var(--u-spacing-32);

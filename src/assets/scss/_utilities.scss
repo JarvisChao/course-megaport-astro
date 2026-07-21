@@ -43,6 +43,7 @@
   overflow: hidden;
 }
 
+// 如同 background-image（用 img 搭配 object-fit 有助於 SEO 搜尋）
 .u-object-fit {
   --object-fit: cover;
   --object-position-x: center;
@@ -121,14 +122,8 @@
   ol {
     padding-left: rem(36);
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  button {
+  // prettier-ignore
+  h1, h2, h3, h4, h5, h6, p, button {
     margin: revert;
   }
   span {

@@ -24,6 +24,7 @@ import 'lenis/dist/lenis.css';
 import '@/styles/global.css';
 import '@/assets/scss/style.scss';
 
+// 建立每個頁面可自定義的頁面資訊 props
 interface Props {
   pageTitle?: string;
   infoTitle?: string;
@@ -48,10 +49,12 @@ if (infoTitle) {
   title = `${title}｜${infoTitle}`;
 }
 
-const basePath = import.meta.env.BASE_URL;
+// 完整的頁面網址
+const pageUrl = Astro.url.href;
+
 // origin 沒有結尾斜線
 const siteUrl = Astro.site?.origin;
-const pageUrl = Astro.url.href;
+const basePath = import.meta.env.BASE_URL;
 
 const normalizedImage = image.replace(/^\//, '');
 const imageUrl = `${siteUrl}${basePath}/${normalizedImage}`;
