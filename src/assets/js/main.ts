@@ -42,7 +42,7 @@ const normalizePath = (path: string) => {
   return path.replace(/\/$/, '');
 };
 const pathname = normalizePath(location.pathname);
-document.querySelectorAll('a').forEach((item) => {
+document.querySelectorAll('a').forEach(item => {
   const href = item.getAttribute('href');
   if (!href || href.startsWith('#') || href === '##') return;
   if (item.origin !== location.origin) return;
@@ -73,7 +73,7 @@ document.querySelectorAll('a').forEach((item) => {
 /* ------ Plugin ------ */
 /* ----------------------------------- */
 const $lazyImgs = document.querySelectorAll<HTMLImageElement>('img.js-lazy');
-$lazyImgs.forEach((item) => {
+$lazyImgs.forEach(item => {
   // https://png-pixel.com/
   item.setAttribute(
     'src',
@@ -87,7 +87,7 @@ export const lazyLoad = new LazyLoad({
   elements_selector: '.js-lazy',
   // 設定距離可視區(視窗)底部多遠觸發，官方預設是 300
   threshold: 500,
-  callback_loaded: (el) => {
+  callback_loaded: el => {
     AOS.refresh();
 
     // 只針對 parallax 元素做 refresh，避免滾動頻繁卡頓
@@ -102,32 +102,30 @@ gsap.registerPlugin(ScrollTrigger);
 // 確保圖片都載入後在初始化視差滾動
 window.addEventListener('load', () => {
   // 圖片視差滾動
-  gsap.utils
-    .toArray<HTMLElement>('[data-parallax-offset]')
-    .forEach((wrapper) => {
-      const img = wrapper.querySelector('img');
+  gsap.utils.toArray<HTMLElement>('[data-parallax-offset]').forEach(wrapper => {
+    const img = wrapper.querySelector('img');
 
-      if (!img) return;
+    if (!img) return;
 
-      img.style.willChange = 'transform';
+    img.style.willChange = 'transform';
 
-      const tl = gsap.timeline({
-        defaults: { ease: 'linear' },
-        scrollTrigger: {
-          trigger: wrapper,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true,
-        },
-      });
-
-      const offset = Number(wrapper.dataset.parallaxOffset);
-      img.style.setProperty('--parallax-offset', String(Math.abs(offset)));
-
-      if (offset > 0) {
-        tl.fromTo(img, { y: -1 * offset }, { y: 0 });
-      } else {
-        tl.fromTo(img, { y: 0 }, { y: offset });
-      }
+    const tl = gsap.timeline({
+      defaults: { ease: 'linear' },
+      scrollTrigger: {
+        trigger: wrapper,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true,
+      },
     });
+
+    const offset = Number(wrapper.dataset.parallaxOffset);
+    img.style.setProperty('--parallax-offset', String(Math.abs(offset)));
+
+    if (offset > 0) {
+      tl.fromTo(img, { y: -1 * offset }, { y: 0 });
+    } else {
+      tl.fromTo(img, { y: 0 }, { y: offset });
+    }
+  });
 });

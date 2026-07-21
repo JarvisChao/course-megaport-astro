@@ -86,7 +86,7 @@ const newsList = (await getCollection('news')).sort((a, b) =>
     <div class="swiper l-home-news__swiper" data-aos="fade-up">
       <div class="swiper-wrapper">
         {
-          newsList.map((item) => (
+          newsList.map(item => (
             <div class="swiper-slide l-home-news__slide">
               <Card entry={item} />
             </div>

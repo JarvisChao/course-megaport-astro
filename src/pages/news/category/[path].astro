@@ -13,14 +13,14 @@ export async function getStaticPaths() {
   );
 
   return newsCategories
-    .filter(({ id }) => id !== 'all')
-    .map((category) => {
-      let list = entries.filter((entry) => entry.data.category === category.id);
+    .filter(({ id }) => id !== 'all') // 排除 all，因為 all 在 index.astro 顯示了
+    .map(category => {
+      let list = entries.filter(entry => entry.data.category === category.id);
 
       if (category.id === 'latest') list = entries.slice(0, 4);
       if (category.id === 'others') {
         // 篩出沒有設定分類的
-        list = entries.filter((entry) => !entry.data.category);
+        list = entries.filter(entry => !entry.data.category);
       }
 
       return {

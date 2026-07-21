@@ -2,9 +2,8 @@
 @use 'mixins' as *;
 
 @layer base {
-  *,
-  *::before,
-  *::after {
+  // prettier-ignore
+  *, *::before, *::after {
     position: relative;
     box-sizing: border-box;
   }
@@ -46,12 +45,8 @@
   /* ----------------------------------- */
   /* ------ Reset ------ */
   /* ----------------------------------- */
-  a,
-  button,
-  input,
-  label,
-  select,
-  textarea {
+  // prettier-ignore
+  a, button, input, label, select, textarea {
     // 防止雙點擊畫面放大
     -ms-touch-action: manipulation;
     touch-action: manipulation;
@@ -108,14 +103,8 @@
     border: 1px solid var(--color-black);
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  button {
+  // prettier-ignore
+  h1, h2, h3, h4, h5, h6, p, button {
     margin: 0;
     // 防止插件影響我們自己的設定
     font-family: inherit;
@@ -125,12 +114,8 @@
     line-height: inherit;
     color: inherit;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  // prettier-ignore
+  h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
   }
   p {
