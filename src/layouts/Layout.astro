@@ -7,12 +7,14 @@ import {
   SITE_INFO_TITLE,
   SITE_NAME,
 } from '@/consts';
+
+// 使用 @fontsource 載入字體，不透過 Google Fonts CDN
+// 正式專案可控性較高，但中文字體要注意檔案大小
 import '@fontsource/noto-sans-tc/400.css';
 import '@fontsource/noto-sans-tc/500.css';
 import '@fontsource/noto-sans-tc/900.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/900.css';
-import 'lenis/dist/lenis.css';
 
 // 引入連結
 // css 引入也有順序，通常插件在自定義的 style 上面
@@ -21,6 +23,7 @@ import 'lenis/dist/lenis.css';
 // 2. global.css 有 @layer theme, bootstrap, base, utilities;
 //    這代表 layer 順序在 global.css 先宣告好，
 //    後面 style.scss 裡的 base layer 才會被放進正確的位置
+import 'lenis/dist/lenis.css';
 import '@/styles/global.css';
 import '@/assets/scss/style.scss';
 
@@ -49,18 +52,26 @@ if (infoTitle) {
   title = `${title}｜${infoTitle}`;
 }
 
-// 完整的頁面網址
+// 取得目前頁面的完整網址，適合用在 og:url
 const pageUrl = Astro.url.href;
 
+// Astro.site 來自 astro.config.mjs 的 site 設定
 // origin 沒有結尾斜線
 const siteUrl = Astro.site?.origin;
+
+// BASE_URL 會包含 astro.config.mjs 的 base 設定
 const basePath = import.meta.env.BASE_URL;
 
+// 將傳入的 image 正規化，避免開頭斜線造成路徑組合錯誤
 const normalizedImage = image.replace(/^\//, '');
+// 組合完整 Open Graph 圖片網址
 const imageUrl = `${siteUrl}${basePath}/${normalizedImage}`;
+
+// body 背景圖會用 define:vars 傳進 style
 const bodyBgImage = `url('${basePath}/img/bg-dots.png')`;
 ---
 
+<!-- 引入全站共用 client-side JavaScript -->
 <script>
   import '@/assets/js/main.ts';
 </script>
@@ -119,16 +130,26 @@ const bodyBgImage = `url('${basePath}/img/bg-dots.png')`;
     <meta name="msapplication-TileColor" content="#ef8322" />
     <meta name="theme-color" content="#ffffff" />
 
+    <!-- 讓頁面可以額外插入 head 內容，例如 JSON-LD -->
     <slot name="head" />
   </head>
-  <body>
+
+  <body class="flex flex-col min-h-screen">
     <Header />
-    <slot />
+
+    <!-- 頁面主要內容會插入這裡 -->
+    <main class="grow">
+      <slot />
+    </main>
+
     <Footer />
+
+    <!-- 讓頁面可以額外插入 body 結尾內容 -->
     <slot name="footer" />
   </body>
 </html>
 
+<!-- body 是全域元素，所以用 is:global -->
 <style is:global define:vars={{ bodyBgImage }}>
   body {
     background-image: var(--bodyBgImage);

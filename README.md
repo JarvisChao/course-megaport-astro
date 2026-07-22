@@ -34,3 +34,9 @@ pnpm install
 ```bash
 pnpm dev
 ```
+
+---
+
+## 專案結構、樣式說明文件
+
+點擊 [連結](https://hackmd.io/@MLvWkvudT9-uHxhwrHAQBA/ry51X82NGg) 查看專案相關結構、樣式設定說明

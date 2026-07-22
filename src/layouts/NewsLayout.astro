@@ -15,13 +15,11 @@ const { currentCategory } = Astro.props;
   pageTitle={currentCategory.title}
   description={currentCategory.description || undefined}
 >
-  <main class="l-main">
-    <InnerHero title={currentCategory.title} />
-    <section class="l-news-list">
-      <div class="container">
-        <NewsCategory />
-        <slot />
-      </div>
-    </section>
-  </main>
+  <InnerHero title={currentCategory.title} />
+  <section class="l-news-list">
+    <div class="container">
+      <NewsCategory />
+      <slot />
+    </div>
+  </section>
 </Layout>

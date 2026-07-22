@@ -22,6 +22,7 @@
   }
 
   // Spacing
+  // 加 u 是避免與 Tailwind 衝突
   --u-spacing-40: #{rem(160)};
   --u-spacing-36: #{rem(144)};
   --u-spacing-32: #{rem(128)};
