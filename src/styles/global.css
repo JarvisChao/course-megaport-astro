@@ -29,28 +29,28 @@
   --spacing-section-x: var(--section-spacing-x);
   --spacing-section-y: var(--section-spacing-y);
 
-  --spacing-40: var(--u-spacing-40);
-  --spacing-36: var(--u-spacing-36);
-  --spacing-32: var(--u-spacing-32);
-  --spacing-30: var(--u-spacing-30);
-  --spacing-26: var(--u-spacing-26);
-  --spacing-24: var(--u-spacing-24);
-  --spacing-22: var(--u-spacing-22);
-  --spacing-20: var(--u-spacing-20);
-  --spacing-18: var(--u-spacing-18);
-  --spacing-16: var(--u-spacing-16);
-  --spacing-14: var(--u-spacing-14);
-  --spacing-12: var(--u-spacing-12);
-  --spacing-10: var(--u-spacing-10);
-  --spacing-9: var(--u-spacing-9);
-  --spacing-8: var(--u-spacing-8);
-  --spacing-6: var(--u-spacing-6);
-  --spacing-5: var(--u-spacing-5);
-  --spacing-4: var(--u-spacing-4);
-  --spacing-3: var(--u-spacing-3);
-  --spacing-2: var(--u-spacing-2);
-  --spacing-1_5: var(--u-spacing-1_5);
-  --spacing-1: var(--u-spacing-1);
+  --spacing-40: var(--app-spacing-40);
+  --spacing-36: var(--app-spacing-36);
+  --spacing-32: var(--app-spacing-32);
+  --spacing-30: var(--app-spacing-30);
+  --spacing-26: var(--app-spacing-26);
+  --spacing-24: var(--app-spacing-24);
+  --spacing-22: var(--app-spacing-22);
+  --spacing-20: var(--app-spacing-20);
+  --spacing-18: var(--app-spacing-18);
+  --spacing-16: var(--app-spacing-16);
+  --spacing-14: var(--app-spacing-14);
+  --spacing-12: var(--app-spacing-12);
+  --spacing-10: var(--app-spacing-10);
+  --spacing-9: var(--app-spacing-9);
+  --spacing-8: var(--app-spacing-8);
+  --spacing-6: var(--app-spacing-6);
+  --spacing-5: var(--app-spacing-5);
+  --spacing-4: var(--app-spacing-4);
+  --spacing-3: var(--app-spacing-3);
+  --spacing-2: var(--app-spacing-2);
+  --spacing-1_5: var(--app-spacing-1_5);
+  --spacing-1: var(--app-spacing-1);
 
   /* Font */
   --font-sans: 'Noto Sans TC', sans-serif;
@@ -67,16 +67,16 @@
   /* Text */
   /* 清除所有預設樣式 */
   --text-*: initial;
-  --text-5xl: var(--u-text-5xl);
-  --text-4xl: var(--u-text-4xl);
-  --text-3xl: var(--u-text-3xl);
-  --text-2xl: var(--u-text-2xl);
-  --text-xl: var(--u-text-xl);
-  --text-lg: var(--u-text-lg);
-  --text-md: var(--u-text-md);
-  --text-base: var(--u-text-base);
-  --text-sm: var(--u-text-sm);
-  --text-xs: var(--u-text-xs);
+  --text-5xl: var(--app-text-5xl);
+  --text-4xl: var(--app-text-4xl);
+  --text-3xl: var(--app-text-3xl);
+  --text-2xl: var(--app-text-2xl);
+  --text-xl: var(--app-text-xl);
+  --text-lg: var(--app-text-lg);
+  --text-md: var(--app-text-md);
+  --text-base: var(--app-text-base);
+  --text-sm: var(--app-text-sm);
+  --text-xs: var(--app-text-xs);
 
   /* Line Height */
   --leading-none: 1;
