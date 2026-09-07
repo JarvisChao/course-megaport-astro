@@ -14,8 +14,6 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "@fontsource/noto-sans-tc": "^5.2.8",
-    "@fontsource/roboto": "^5.2.8",
     "@iconify-icons/fa-solid": "^1.2.1",
     "@iconify-icons/mingcute": "^1.2.9",
     "@tailwindcss/vite": "^4.1.0",

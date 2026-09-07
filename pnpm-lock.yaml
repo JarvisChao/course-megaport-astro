@@ -11,12 +11,6 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.7.3
         version: 3.7.3
-      '@fontsource/noto-sans-tc':
-        specifier: ^5.2.8
-        version: 5.2.9
-      '@fontsource/roboto':
-        specifier: ^5.2.8
-        version: 5.2.10
       '@iconify-icons/fa-solid':
         specifier: ^1.2.1
         version: 1.2.4
@@ -397,12 +391,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@fontsource/noto-sans-tc@5.2.9':
-    resolution: {integrity: sha512-Z+pXTvXYrip79lPV9X1lCYO3UTys55P25VqcifDStIzdZ86I4R6t8dz+NhGd09YdbvHWvOCB5Icw1m7glKHPNQ==}
-
-  '@fontsource/roboto@5.2.10':
-    resolution: {integrity: sha512-8HlA5FtSfz//oFSr2eL7GFXAiE7eIkcGOtx7tjsLKq+as702x9+GU7K95iDeWFapHC4M2hv9RrpXKRTGGBI8Zg==}
 
   '@iconify-icons/fa-solid@1.2.4':
     resolution: {integrity: sha512-G0B2c/qKcQS8qHNn0/DQ6hVLu7HKFDLwEBj9mTSgrfvi40if/QFhWoXbH17yRa0DAE0Wod6evp6YwHR7PwHGrg==}
@@ -2230,10 +2218,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.28.1':
     optional: true
-
-  '@fontsource/noto-sans-tc@5.2.9': {}
-
-  '@fontsource/roboto@5.2.10': {}
 
   '@iconify-icons/fa-solid@1.2.4':
     dependencies:

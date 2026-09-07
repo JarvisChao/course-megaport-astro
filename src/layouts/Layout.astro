@@ -8,14 +8,6 @@ import {
   SITE_NAME,
 } from '@/consts';
 
-// 使用 @fontsource 載入字體，不透過 Google Fonts CDN
-// 正式專案可控性較高，但中文字體要注意檔案大小
-import '@fontsource/noto-sans-tc/400.css';
-import '@fontsource/noto-sans-tc/500.css';
-import '@fontsource/noto-sans-tc/900.css';
-import '@fontsource/roboto/700.css';
-import '@fontsource/roboto/900.css';
-
 // 引入連結
 // css 引入也有順序，通常插件在自定義的 style 上面
 // 這裡順序的原因是：
@@ -83,6 +75,15 @@ const bodyBgImage = `url('${basePath}/img/bg-dots.png')`;
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+
+    <!-- 使用 Google Fonts CDN 載入字體，適合教學與快速開發 -->
+    <!-- preconnect 讓瀏覽器提早連線到 Google Fonts 相關網域 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;900&family=Roboto:wght@700;900&display=swap"
     />
 
     <!-- 教學用網站，因此設置此 meta 防止瀏覽器索引 -->
