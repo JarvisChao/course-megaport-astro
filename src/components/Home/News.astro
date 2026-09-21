@@ -2,6 +2,8 @@
 import SectionTitle from '@/components/SectionTitle.astro';
 import Card from '@/components/News/Card.astro';
 import { getCollection } from 'astro:content';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const newsList = (await getCollection('news')).sort((a, b) =>
   b.data.publishDate.localeCompare(a.data.publishDate),
@@ -15,8 +17,6 @@ const newsList = (await getCollection('news')).sort((a, b) =>
   import Swiper from 'swiper';
   import { Navigation } from 'swiper/modules';
   import { lazyLoad } from '@/assets/js/main';
-  import 'swiper/css';
-  import 'swiper/css/navigation';
 
   addIcon('fa-solid:arrow-left', arrowLeftIcon);
   addIcon('fa-solid:arrow-right', arrowRightIcon);

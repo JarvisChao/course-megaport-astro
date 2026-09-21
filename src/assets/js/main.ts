@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import LazyLoad from 'vanilla-lazyload';
-import 'aos/dist/aos.css';
 
 /* ----------------------------------- */
 /* ------ Custom ------ */
