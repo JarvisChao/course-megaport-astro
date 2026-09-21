@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import icon from 'astro-icon';
 
 export default defineConfig({
   site: 'https://jarvischao.github.io',
@@ -29,6 +30,7 @@ export default defineConfig({
   },
 
   integrations: [
+    icon(),
     sitemap({
       changefreq: 'daily',
     }),

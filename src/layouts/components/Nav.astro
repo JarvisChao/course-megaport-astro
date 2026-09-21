@@ -1,17 +1,11 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 const basePath = import.meta.env.BASE_URL;
 ---
 
 <script>
-  import facebookIcon from '@iconify-icons/mingcute/facebook-fill';
-  import instagramIcon from '@iconify-icons/mingcute/ins-fill';
-  import youtubeIcon from '@iconify-icons/mingcute/youtube-fill';
-  import { addIcon } from 'iconify-icon';
   import { lenis } from '@/scripts/main';
-
-  addIcon('mingcute:facebook-fill', facebookIcon);
-  addIcon('mingcute:ins-fill', instagramIcon);
-  addIcon('mingcute:youtube-fill', youtubeIcon);
 
   // Navbar
   const burgerEl = document.querySelector<HTMLElement>('.o-burger');
@@ -99,8 +93,7 @@ const basePath = import.meta.env.BASE_URL;
           class="c-nav__btn"
           aria-label="facebook"
         >
-          <iconify-icon icon="mingcute:facebook-fill" class="u-icon-md"
-          ></iconify-icon>
+          <Icon name="mingcute:facebook-fill" class="u-icon-md" />
         </a>
       </li>
       <li class="c-nav__btn-wrap">
@@ -110,8 +103,7 @@ const basePath = import.meta.env.BASE_URL;
           class="c-nav__btn"
           aria-label="instagram"
         >
-          <iconify-icon icon="mingcute:ins-fill" class="u-icon-md"
-          ></iconify-icon>
+          <Icon name="mingcute:ins-fill" class="u-icon-md" />
         </a>
       </li>
       <li class="c-nav__btn-wrap">
@@ -121,8 +113,7 @@ const basePath = import.meta.env.BASE_URL;
           class="c-nav__btn"
           aria-label="youtube"
         >
-          <iconify-icon icon="mingcute:youtube-fill" class="u-icon-md"
-          ></iconify-icon>
+          <Icon name="mingcute:youtube-fill" class="u-icon-md" />
         </a>
       </li>
     </ul>

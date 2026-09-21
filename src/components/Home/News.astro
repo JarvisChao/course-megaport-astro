@@ -2,6 +2,7 @@
 import SectionTitle from '@/components/SectionTitle.astro';
 import Card from '@/components/News/Card.astro';
 import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -11,15 +12,9 @@ const newsList = (await getCollection('news')).sort((a, b) =>
 ---
 
 <script>
-  import arrowLeftIcon from '@iconify-icons/fa-solid/arrow-left';
-  import arrowRightIcon from '@iconify-icons/fa-solid/arrow-right';
-  import { addIcon } from 'iconify-icon';
   import Swiper from 'swiper';
   import { Navigation } from 'swiper/modules';
   import { lazyLoad } from '@/scripts/main';
-
-  addIcon('fa-solid:arrow-left', arrowLeftIcon);
-  addIcon('fa-solid:arrow-right', arrowRightIcon);
 
   new Swiper('.l-home-news__swiper', {
     modules: [Navigation],
@@ -74,10 +69,10 @@ const newsList = (await getCollection('news')).sort((a, b) =>
 
 <section id="news" class="l-home-news">
   <div class="l-home-news__swiper-btn --prev">
-    <iconify-icon icon="fa-solid:arrow-left" class="u-icon"></iconify-icon>
+    <Icon name="fa-solid:arrow-left" class="u-icon" />
   </div>
   <div class="l-home-news__swiper-btn --next">
-    <iconify-icon icon="fa-solid:arrow-right" class="u-icon"></iconify-icon>
+    <Icon name="fa-solid:arrow-right" class="u-icon" />
   </div>
   <div class="l-container">
     <div class="mb-20 text-center" data-aos="fade-up">
