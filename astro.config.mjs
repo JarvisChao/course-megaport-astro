@@ -10,11 +10,11 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    resolve: {
-      alias: {
-        '@': resolve('src'),
-      },
-    },
+    // resolve: {
+    //   alias: {
+    //     '@': resolve('src'),
+    //   },
+    // },
     css: {
       preprocessorOptions: {
         scss: {
