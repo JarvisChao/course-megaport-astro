@@ -18,7 +18,7 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          loadPaths: [resolve('src/assets/scss')],
+          loadPaths: [resolve('src/styles/scss')],
           additionalData: `
             @use "functions" as *;
             @use "mixins" as *;
