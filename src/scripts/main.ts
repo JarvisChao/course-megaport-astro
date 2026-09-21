@@ -8,11 +8,9 @@ import LazyLoad from 'vanilla-lazyload';
 /* ------ Custom ------ */
 /* ----------------------------------- */
 // Initialize Lenis
-const lenis = new Lenis({
+export const lenis = new Lenis({
   autoRaf: true,
 });
-
-(window as unknown as { lenis: Lenis }).lenis = lenis;
 
 AOS.init({
   offset: 160,

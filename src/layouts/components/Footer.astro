@@ -8,16 +8,24 @@ const basePath = import.meta.env.BASE_URL;
   import instagramIcon from '@iconify-icons/mingcute/ins-fill';
   import youtubeIcon from '@iconify-icons/mingcute/youtube-fill';
   import { addIcon } from 'iconify-icon';
+  import { lenis } from '@/scripts/main';
 
   addIcon('fa-solid:long-arrow-alt-up', longArrowAltUpIcon);
   addIcon('mingcute:facebook-fill', facebookIcon);
   addIcon('mingcute:ins-fill', instagramIcon);
   addIcon('mingcute:youtube-fill', youtubeIcon);
+
+  const goTopEl = document.querySelector<HTMLElement>('.o-gotop');
+  goTopEl?.addEventListener('click', () => {
+    lenis.scrollTo(0, {
+      duration: 1.5,
+    });
+  });
 </script>
 
 <footer class="l-footer">
-  <!-- onclick="lenis.scrollTo('body')" -->
-  <div class="o-gotop" onclick="window.lenis?.scrollTo(0, { duration: 1.5 })">
+  <!-- 使用共用的 Lenis instance 回到頂端 -->
+  <div class="o-gotop">
     <iconify-icon icon="fa-solid:long-arrow-alt-up" class="u-icon-sm"
     ></iconify-icon>
     <span class="font-900">TOP</span>
