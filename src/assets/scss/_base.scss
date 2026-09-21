@@ -147,7 +147,7 @@
 
   // Container
   // 客製 Bootstrap container 控制最大寬度
-  .container {
+  .l-container {
     --container-width: var(--container-default);
     &-md {
       --container-width: var(--container-md);
@@ -171,7 +171,7 @@
     // }
   }
 
-  [class*='container'] {
+  [class*='l-container'] {
     max-width: var(--container-width);
     margin: 0 auto;
 

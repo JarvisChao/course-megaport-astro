@@ -6,7 +6,7 @@
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 /* Tailwind 預設會影響我們自定義的 container */
-@source not inline("container");
+/* @source not inline("container"); */
 
 /*
   一般 @theme 只會依照你實際用到的 class 產生相關 CSS 變數；
