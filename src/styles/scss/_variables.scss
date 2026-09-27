@@ -22,7 +22,9 @@
   }
 
   // Spacing
-  // 加 u 是避免與 Tailwind 衝突
+  // 加 app 是避免與 Tailwind 搞混
+  // 要在 CSS 變數使用 function 需要加上 #{}
+  // 不然會直接編譯 rem(*) 出去
   --app-spacing-40: #{rem(160)};
   --app-spacing-36: #{rem(144)};
   --app-spacing-32: #{rem(128)};
@@ -45,6 +47,7 @@
   --app-spacing-2: #{rem(8)};
   --app-spacing-1_5: #{rem(6)};
   --app-spacing-1: #{rem(4)};
+
   @include media(max-sm) {
     --app-spacing-40: 24vw;
     --app-spacing-36: 22vw;

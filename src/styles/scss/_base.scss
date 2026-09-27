@@ -1,7 +1,14 @@
+// https://sass-lang.com/documentation/at-rules/use/
 @use 'functions' as *;
 @use 'mixins' as *;
 
-@layer base {
+// 沒有加 @layer 的話，css 權重會大於 tailwind 的 @layer utilities
+// 因為 @layer 的規則是，沒有包 @layer 的權重，會大於任何有包 @layer 的 css
+@layer app-base {
+  /* ----------------------------------- */
+  /* ------ Reset ------ */
+  /* ----------------------------------- */
+
   // prettier-ignore
   *, *::before, *::after {
     position: relative;
@@ -42,9 +49,6 @@
     transition: background-color 0.8s;
   }
 
-  /* ----------------------------------- */
-  /* ------ Reset ------ */
-  /* ----------------------------------- */
   // prettier-ignore
   a, button, input, label, select, textarea {
     // 防止雙點擊畫面放大
@@ -66,11 +70,17 @@
   button {
     padding: 0;
     background: none;
-    appearance: none;
     border: none;
+    text-align: inherit;
+    appearance: none;
+    outline: none;
   }
   img {
     max-width: 100%;
+    // 因為圖片 display 是 inline，會導致底部會有預留給小寫英文的縫隙
+    // 可以使用 display: block; 解決，但不建議，因為會影響後台編輯器用 text-align 圖片調整置中
+    // 這邊建議使用 vertical-align: middle; 解決
+    // display: block;
     vertical-align: middle;
   }
   svg {
@@ -79,10 +89,11 @@
   }
   ul,
   ol {
-    padding: 0;
     margin: 0;
+    padding: 0;
     list-style: none;
     &.--initial {
+      // revert 返回瀏覽器預設
       list-style: revert;
     }
   }
@@ -90,6 +101,7 @@
     padding-left: rem(28);
   }
   ol.--initial {
+    // padding-left: calc(var(--spacing) * 9);
     padding-left: rem(36);
   }
 
@@ -106,7 +118,7 @@
   // prettier-ignore
   h1, h2, h3, h4, h5, h6, p, button {
     margin: 0;
-    // 防止插件影響我們自己的設定
+    // 因為有些框架會設定預設值，所以要把他設定成 inherit 繼承，做初始化
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
