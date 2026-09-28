@@ -1,5 +1,8 @@
 {
   "liveServer.settings.port": 5501,
   "editor.formatOnSave": true,
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "emmet.includeLanguages": {
+    "astro": "html"
+  }
 }
